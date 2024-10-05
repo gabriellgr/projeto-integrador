@@ -12,7 +12,7 @@
 </head>
 <body>
 
-  <header>
+  <header class="portal_do_paciente">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
@@ -35,150 +35,118 @@
     </nav>
   </header>
 
+  <h2 class="titulo_portal_do_paciente">Portal do paciente</h2>
+  
+<!--<time class="hora_data" datetime="{{ data_hora|date:'Y-m-dTH:i:s' }}">{{ data_hora|date:'d/m/Y H:i' }}</time>-->
 
-        <h1>Portal do paciente</h1>
+<time datetime="date">{{data}}</time>
 
-        <h4>Data e Hora Atual</h4>
-    <time datetime="{{ data_hora|date:'Y-m-dTH:i:s' }}">{{ data_hora|date:'d/m/Y H:i' }}</time></p>
-   
-
-        <nav class="sumario-portal-do-paciente">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        
+        <nav class="nav-menu">
             
             <ol>
-               
-              <li><a class="sumario-portal-do-paciente" href="#lista_de_medicos">Lista de Médicos</a></li>
-              <li><a class="sumario-portal-do-paciente" href="#pacientes">Meus dados</a></li>        
-              <li><a class="sumario-portal-do-paciente" href="#historico">Histórico</a></li>        
-              <li><a class="sumario-portal-do-paciente" href="#atendimento">Solicitar consulta</a></li>        
+              <li><a class="nav-menu-link" href="#lista_de_medicos">Médicos disponíveis</a></li>
+              <li><a class="nav-menu-link" href="#paciente">Meus dados</a></li>        
+              <li><a class="nav-menu-link" href="#historico">Histórico</a></li>        
+              <li><a class="nav-menu-link" href="#atendimento">Solicitar consulta</a></li>        
             </ol>
     
-          </nav>        
+          </nav>     
 
+      </div>
 
+      <div class="col-md-9">
 
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          
+        <div id="lista_de_medicos">
 
-<main id="main-portal-do-paciente">
-
-            <p id="escolhaFinal"></p>
-        </div>
-            
-    </div>
-    <div id="lista_de_medicos">
-
-        <h3>Horários e funções </h3>
-        *FAZER*
-         <strong>Lista de médicos, funções e horário de atendimento </strong>
-
-         <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Função</th>
-                    <th>Consultas marcadas</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for medico in medicos %}
+            <h3>Horários e funções </h3>
+            *FAZER*
+             <strong>Lista de médicos, funções e horário de atendimento </strong>
+      
+             <table class="table table-custom">
+                <thead>
                     <tr>
-                        <td>{{ medico.nome }}</td> 
-                        <td>{{ medico.funcao }}</td>
-                        <td>{{ medico.data_consulta }}</td> 
+                        <th>Nome</th>
+                        <th>Função</th>
+                        <th>Consultas marcadas</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for medico in medicos %}
+                        <tr>
+                            <td>{{ medico.nome }}</td> 
+                            <td>{{ medico.funcao }}</td>
+                            <td>{{ medico.data_consulta }}</td> 
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+      
+      
+        <div id="paciente">
+          <h3>Seus dados</h3>
+          <table class="table table-custom">
+              <thead>
+                  <tr>
+                      <th>Id</th>
+                      <th>Nome</th>
+                      <th>Idade</th>
+                      <th>CPF</th>
+                      <th>Telefone</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for paciente in pacientes %}
+                      {% if paciente.id_usuario == 3 %}
+                          <tr>
+                              <td>{{ paciente.id_usuario }}</td>
+                              <td>{{ paciente.nome }}</td>
+                              <td>{{ paciente.idade }}</td>
+                              <td>{{ paciente.cpf }}</td>
+                              <td>{{ paciente.telefone }}</td>        
+                          </tr>
+                      {% endif %}
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
+      
+        <div id="historico">
+            <h3>Baixe aqui seu histórico de consultas</h3>
+            <a href="{% static 'historico/sage.pdf' %}" download="historico">arquivo</a>
+        </div>
+      
+        <div id="atendimento">
+          <h1>Solicite atendimento</h1>
+      
+          <div class="input-group rounded">
+        
+            <input id="pesquisa_especialidade" type="search" class="form-control rounded" placeholder="Pesquise a especialidade" aria-label="Search" aria-describedby="search-addon" />
+      
+      
+            <span class="input-group-text border-0" id="search-addon">
+              <i class="fas fa-search"></i>
+            </span>
+          </div>
+    
+        </div>
+      
+
+      </div>
+
     </div>
 
-
-    <div id="pacientes">
-
-          <h1>Seus dados</h1>
-
-          <ul>
-            {% for paciente in pacientes %}
-              {% if paciente.id_usuario == 1 %}
-                <li><strong>ID:</strong> {{ paciente.id_usuario }}</li>
-                <li><strong>Nome:</strong> {{ paciente.nome }}</li>
-                <li><strong>Idade:</strong> {{ paciente.idade }}</li>
-                <li><strong>CPF:</strong> {{ paciente.cpf }}</li>
-                <li><strong>Data da Consulta:</strong> {{ paciente.data_consulta }}</li>
-                <li><strong>Telefone:</strong> {{ paciente.telefone }}</li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-
-    </div>
-    <div id="historico">
-        <h3>Baixe aqui seu histórico de consultas</h3>
-        <a href="{% static 'historico/sage.pdf' %}" download="historico">arquivo</a>
-    </div>
-
-
-  </main>
+  </div>
 
         <footer>
-            <p>&copy; 2024 Direitos Reservados Softex</p>
+            <p>© 2024 Direitos Reservados Softex</p>
         </footer>
+    
 
-
-            
-
+          
 </body>
 </html>

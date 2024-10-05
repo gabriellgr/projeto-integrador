@@ -45,42 +45,54 @@
 
     <main class="container mt-4">
 
-      <h1>Cadastre um novo paciente </h1>
+      
 
-      <form action="{% url 'portal_do_paciente' %}" method="post">
-        {% csrf_token %}<!--Token de aurorização-->
-        <div >
-          <label for="nome">Nome:</label>
-          <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
-        </div>
-        <div >
-          <label for="idade">Idade:</label>
-          <input type="number" class="form-control" id="idade" name="idade" min="0" max="125" placeholder="Idade">
-        </div>
-        <div >
-          <label for="cpf">CPF:</label>
-          <input type="text" class="form-control" id="cpfInput" name="cpf" placeholder="CPF">
+      <div class="container" style="align-items: center; text-align: center;" >
+
+          <div class="col">
+            <div class="formulario">
+              <form action="{% url 'portal_do_paciente' %}" method="post">
+                {% csrf_token %}<!--Token de aurorização-->
+                <div >
+                  <label for="nome">Nome</label>
+                  <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
+                </div>
+                <div >
+                  <label for="idade">Idade</label>
+                  <input type="number" class="form-control" id="idade" name="idade" min="0" max="125" placeholder="Idade">
+                </div>
+                <div >
+                  <label for="cpf">CPF</label>
+                  <input type="text" class="form-control" id="cpfInput" name="cpf" placeholder="CPF">
+                </div>
+                
+                <div >
+                  <label for="CPF">Senha</label>
+                  <input type="password" class="form-control" id="senha" name="senha" placeholder="senha" min="6" max="15">
+                </div>
+        
+                <div >
+                  <label for="telefone">Telefone</label>
+                  <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="Telefone">
+        
+                </div>
+        
+              <!--Exibir datas que podem ser agendadas-->
+                  <label for="data_consulta">Data para consulta: </label>
+                  <input type="date" class="form-control" id="data_consulta" name="data_consulta" placeholder="Data">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary mt-4">Cadastrar</button>
+              </form>
+              
+      
+      
+            </div>
+            
+          </div>
+          
         </div>
         
-        <div >
-          <label for="CPF">Senha:</label>
-          <input type="password" class="form-control" id="senha" name="senha" placeholder="senha" min="6" max="15">
-        </div>
-
-        <div >
-          <label for="telefone">Telefone:</label>
-          <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="Telefone">
-
-        </div>
-
-      <!--Exibir datas que podem ser agendadas-->
-          <label for="data_consulta">Data para consulta: </label>
-          <input type="date" class="form-control" id="data_consulta" name="data_consulta" placeholder="Data">
-        </div>
-
-        <button type="submit" class="btn btn-primary mt-4">Cadastrar</button>
-      </form>
-      
     </main>
     <footer class="mt-4">
       <p>© 2024 Direitos Reservados Softex</p>

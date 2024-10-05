@@ -99,3 +99,4 @@ STATICFILES_DIRS = [
 ```html
 {% load static %}
 ```
+- (control+f5)

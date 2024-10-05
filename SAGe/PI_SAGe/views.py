@@ -58,11 +58,13 @@ def portal_do_paciente(request):
     pacientes = Pacientes.objects.all()
     medicos = Medicos.objects.all()
     data_hora_atual = datetime.now() 
+    data = datetime.now() 
     
     context = {
         "pacientes":pacientes,
         "medicos":medicos,
         "data_hora":data_hora_atual,
+        "data":data
     }
     
     return render(request, 'site_SAGe/portal_do_paciente.html', context ) 
