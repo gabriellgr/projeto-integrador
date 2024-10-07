@@ -45,7 +45,7 @@ a:hover{
   transition: 1s;
   background-color: rgb(0, 100, 0);
   border-radius: 6px;
-
+  color: white;
 }
 
 
@@ -62,4 +62,9 @@ div.formulario{
   border-radius: 6px;
   opacity: 0.7;
   
+}
+#nav-cadastro{
+  background-color: rgb(25, 50, 0) !important;
+  opacity: 0.8;
+  border: 2px solid white;
 }

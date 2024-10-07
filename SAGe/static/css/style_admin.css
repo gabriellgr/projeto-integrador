@@ -15,8 +15,6 @@ body {
 .table {
     margin-top: 20px;
 }
-
-
 #pacientes{
     display: none !important;
 }
@@ -45,4 +43,5 @@ body {
 a:hover{
     background-color: #333;
     color: white !important;
+    border-radius: 6px ;
 }

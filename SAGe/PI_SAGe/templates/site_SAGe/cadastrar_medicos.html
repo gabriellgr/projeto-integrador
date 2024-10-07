@@ -12,9 +12,10 @@
 <h1>cadastrar médicos</h1>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-ligh">
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'admin' %}">Administrar</a>
-      </li>
+      <div>
+        <a id="link-cadastrar-medicos" href="{% url 'admin' %}">Voltar</a>
+      </div>
+        
     </nav>
     
         
@@ -32,7 +33,7 @@
         <div class="form-container">
           <h3>Selecione o intervalo de Datas para consultas</h3>
           <label for="dataInicio">Data Inicial:</label>
-          <input type="date_inicial" id="dataInicio" name="dataInicio" required>
+          <input type="date" id="dataInicio" name="dataInicio" required>
 
           <label for="dataFim">Data Final:</label>
           <input type="date" id="dataFim" name="dataFim" required>
@@ -44,33 +45,5 @@
     
   </div>
 
-  <script>
-      function gerarDatas() {
-          // Obtém as datas de início e fim
-          const dataInicio = new Date(document.getElementById("dataInicio").value);
-          const dataFim = new Date(document.getElementById("dataFim").value);
-
-          // Limpa a lista anterior
-          const lista = document.getElementById("lista-datas");
-          lista.innerHTML = "";
-
-          // Verifica se a data final é maior que a data inicial
-          if (dataInicio > dataFim) {
-              alert("A data final deve ser maior ou igual à data inicial.");
-              return;
-          }
-
-          // Gera as datas no intervalo
-          let dataAtual = new Date(dataInicio);
-          while (dataAtual <= dataFim) {
-              const li = document.createElement("li");
-              li.textContent = dataAtual.toLocaleDateString("pt-BR"); // Formata a data
-              lista.appendChild(li);
-
-              // Incrementa a data para o próximo dia
-              dataAtual.setDate(dataAtual.getDate() + 1);
-          }
-      }
-  </script>
 </body>
 </html>
