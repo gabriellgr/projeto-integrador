@@ -35,12 +35,13 @@
     </nav>
   </header>
 
-  <h2 class="titulo_portal_do_paciente">Portal do paciente</h2>
+  <h1 class="titulo_portal_do_paciente">Portal do paciente</h1>
+  <div id="div-data">
+    <time id="data" datetime="{{ data|date:'Y-m-d' }}">{{ data|date:'d/m/Y' }}</time>
+  </div>
+  
   
 <!--<time class="hora_data" datetime="{{ data_hora|date:'Y-m-dTH:i:s' }}">{{ data_hora|date:'d/m/Y H:i' }}</time>-->
-
-<time datetime="date">{{data}}</time>
-
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3">
@@ -48,10 +49,11 @@
         <nav class="nav-menu">
             
             <ol>
+              <li><a class="nav-menu-link" href="#consultas">Consultas marcadas</a></li>        
+              <li><a class="nav-menu-link" href="#atendimento">Marcar consulta</a></li>        
               <li><a class="nav-menu-link" href="#lista_de_medicos">Médicos disponíveis</a></li>
               <li><a class="nav-menu-link" href="#paciente">Meus dados</a></li>        
-              <li><a class="nav-menu-link" href="#historico">Histórico</a></li>        
-              <li><a class="nav-menu-link" href="#atendimento">Solicitar consulta</a></li>        
+              <li><a class="nav-menu-link" href="#historico">Histórico de consultas</a></li>        
             </ol>
     
           </nav>     
@@ -117,7 +119,7 @@
       
         <div id="historico">
             <h3>Baixe aqui seu histórico de consultas</h3>
-            <a href="{% static 'historico/sage.pdf' %}" download="historico">arquivo</a>
+            <a href="{% static 'historico/sage.pdf' %}" download="historico">Histórico</a>
         </div>
       
         <div id="atendimento">
@@ -132,10 +134,16 @@
               <i class="fas fa-search"></i>
             </span>
           </div>
-    
+          
+         
+
         </div>
       
-
+        <div id="consultas">
+          <h2>Suas consultas marcadas</h2>
+          fazer vizualização
+          <p>data: </p>
+        </div>
       </div>
 
     </div>

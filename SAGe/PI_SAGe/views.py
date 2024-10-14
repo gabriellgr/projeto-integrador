@@ -5,7 +5,7 @@ from .models import Pacientes, Medicos
 from django.contrib.auth import authenticate, login
 
 
-def tratar_palavra(palavra:str):
+'''def tratar_palavra(palavra:str):
     palavra=list(palavra.lower())
     counter = 0
     
@@ -37,7 +37,7 @@ def tratar_palavra(palavra:str):
     print(''.join(palavra))
     
     return ''.join(palavra)
-
+'''
 def home(request):
     return render(request, 'site_SAGe/home.html')
 
@@ -46,9 +46,9 @@ def portal_do_paciente(request):
         novo_usuario = Pacientes()
         novo_usuario.nome = request.POST.get('nome')
         novo_usuario.idade = request.POST.get('idade')
-        novo_usuario.cpf = tratar_palavra(request.POST.get('cpf'))
+        novo_usuario.cpf = request.POST.get('cpf')#tratar_palavra(request.POST.get('cpf'))
         novo_usuario.senha = request.POST.get('senha')
-        novo_usuario.data_consulta = request.POST.get('data_consulta')
+        #novo_usuario.data_consulta = request.POST.get('data_consulta')
         novo_usuario.telefone = request.POST.get('telefone')
         novo_usuario.save()
 
@@ -128,3 +128,6 @@ def admin_page(request):
 
 def cadastrar_medicos(request):
     return render(request, 'site_SAGe/cadastrar_medicos.html')
+
+def esqueceu_senha(request):
+    return render(request, 'site_SAGe/esqueceu_senha.html')

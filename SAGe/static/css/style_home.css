@@ -9,15 +9,18 @@ button{
     border-radius: 6px !important;
     margin: 2px;
 }
+
 input{
-    border-radius: 6px !important;
+  border-radius: 6px !important;
 }
+
 body{
-      color: black;
-      background: url('https://images.unsplash.com/photo-1583947582886-f40ec95dd752?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-      background-repeat: no-repeat;
-      background-size: cover;
+  background: url('https://images.unsplash.com/photo-1583947582886-f40ec95dd752?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  color:black;  
+  background-repeat: no-repeat;
+  background-size: cover;
   }
+  /**/
 /*header*/
 #header{
   background-color: rgb(25, 50, 0) !important;
@@ -49,4 +52,24 @@ a:hover{
 
 }
 
-
+#img-tel-home {
+  border-radius: 50%; /* Define o raio da borda como 50% da largura da imagem */
+  width: 60px; /* Define a largura da imagem */
+  height: 60px; /* Define a altura da imagem */
+  float: right;
+}
+#div-footer{
+  margin-top: 450px;
+}
+#contatos{
+  display: none !important;  
+}
+#contatos:target{
+  display: inline !important;
+}
+#div-div-contatos{
+  color: black;
+  display:inline-block;
+  background-color: burlywood;
+  border: 2px solid black;
+}

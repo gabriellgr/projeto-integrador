@@ -48,5 +48,12 @@ a:hover{
   border-radius: 6px;
 
 }
+/*ver melhor 07/20/034*/
+#nav-sobre{
+  background-color: rgb(25, 50, 0);
+  opacity: 0.8;
+  border: 2px solid white !important;
+  color: red;
+}
 
 

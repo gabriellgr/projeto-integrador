@@ -52,6 +52,21 @@ body{
     background-color: #ddd;
     display: inline;
 }
+
+#consultas{
+  display: none;
+}
+#consultas:target{
+  padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+    background-color: #ddd;
+  display: inline-block;
+}
+
 /* sumario*/
 .nav-menu {
   background-color: #f2f2f2; /* Adiciona cor de fundo ao menu */
@@ -121,4 +136,12 @@ body{
     color: #333; 
     font-weight: bold;
     
+  }
+  #div-data{
+    text-align: end;
+    margin-right: 30px;
+    margin-top: -20px;
+  }
+  #data{
+    font-weight:bolder;
   }
