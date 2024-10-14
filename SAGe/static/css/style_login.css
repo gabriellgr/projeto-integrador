@@ -1,0 +1,114 @@
+/* Estilos gerais */
+*{
+    font-size: 1.2rem;
+  }
+  
+  /* Estilos para o corpo */
+  body{
+    
+      background: url('https://images.unsplash.com/photo-1583947582886-f40ec95dd752?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      color:black;  
+      background-repeat: no-repeat;
+      background-size: cover;
+    
+  }
+  
+  /* Estilos para o header */
+  header {
+    opacity: 0.8;
+    color: white; 
+  }
+  
+  /* Estilos para os links da navbar */
+  .navbar-nav > li > a {
+    color: white;
+    border: 2px solid black;
+    border-radius: 6px;
+    transition: background-color 1s;
+  }
+  
+  /* Estilos para os links da navbar quando o mouse está sobre eles */
+  .navbar-nav > li > a:hover {
+    background-color: rgb(0, 100, 150);
+    color: white;
+  }
+  
+  #div-footer{
+    
+      position: fixed; /* Posição fixa na tela */
+      bottom: 0; /* Posiciona na parte inferior da tela */
+      width: 100%; /* Largura total da tela */
+      padding: 20px; /* Espaçamento interno */
+      text-align: center; /* Centraliza o conteúdo */
+    
+  }
+  
+  /* Responsividade para telas menores (abaixo de 992px) */
+  @media (max-width: 992px) {
+    .navbar-nav {
+      flex-direction: column; /* Organiza os itens do menu verticalmente */
+      justify-content: center; /* Centraliza os itens do menu verticalmente */
+    }
+    .navbar-nav li {
+      margin-bottom: 10px; /* Adiciona espaço entre os itens do menu */
+    }
+  }  
+/*_______FORM_LOGIN_________________________________________________________________*/
+
+/* Estilos para a div "login" */
+div.login {
+    text-align: center;
+    font-family: sans-serif;
+    color: black;
+    background-color: rgb(200, 200, 200);
+    padding: 20px;
+    border-radius: 6px;
+    opacity: 0.8;
+    display: inline-block;
+}
+
+/* Estilos para o link "Esqueceu a senha" */
+.esqueceu_senha_link {
+    color: rgb(0, 100, 150); 
+}
+
+/* Estilos para a div "container" */
+div.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+}
+
+/* Estilos para o botão "Login" */
+#login-button {
+    color: white;
+    border-radius: 6px;
+    background-color: rgb(0, 150, 200); 
+}
+
+/* Estilos para o botão "Login" quando o mouse está sobre ele */
+#login-button:hover {
+    transition: 1.2s; /* Transição suave para a cor de hover */
+    color: rgb(0, 150, 250); 
+    background: white;
+}
+
+/* Estilos para os campos "CPF" e "Senha" */
+#password, #cpf {
+    border-radius: 6px;
+}
+
+/* Estilos para o título "Login" */
+.login-title > h1 {
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    color: black;
+}
+
+
+.login{
+    align-items: center;
+    text-align: center;
+}

@@ -16,6 +16,9 @@ def cadastro(request):
             
             # Define a senha usando set_password
             paciente.set_password(form.cleaned_data['password'])
+
+            # Define a data de nascimento corretamente
+            paciente.data_de_nascimento = form.cleaned_data['data_de_nascimento']
             
             # Salva o paciente no banco de dados
             paciente.save()
@@ -31,6 +34,7 @@ def cadastro(request):
     else:
         form = PacienteForm()
     return render(request, 'cadastro.html', {'form': form})
+
 
 '''def login(request):
     """

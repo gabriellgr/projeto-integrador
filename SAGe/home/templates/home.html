@@ -1,5 +1,4 @@
 {% load static %}
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,35 +8,35 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
     <link rel="stylesheet" href="{% static 'css/style_home.css' %}">
-  
+    
   </head>
   <body>
     
     <header>
-
-      <nav id="home-nav" class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid" id="header">
-          <a class="navbar-brand" href="#"><strong>🏘️</strong></a>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="home" width="30" height="30">
+          </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-
-         
-          
-          <div  class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item"></li>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">  <!-- Links à esquerda -->
+              <li class="nav-item">
                 <a class="nav-link" href="{% url 'cadastro' %}">Cadastre-se</a>
-            </ul>
-            <ul class="navbar-nav">
-              <li class="nav-item"></li>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">Login</a>
+              </li>
+              
             </ul>
+            <!--
+            <a href="#contatos" class="ms-3"> <img id="img-tel-home" src="{% static 'img/tel.jpg' %}" alt="telefone" class="rounded-circle" style="width: 40px; height: 40px;"> </a>
+            -->
+            
           </div>
-            <a href="#contatos"><img id="img-tel-home" src="{% static 'img/tel.jpg' %}" alt="telefone"></a>
-          
         </div>
-        
       </nav>
     </header>
 
@@ -50,6 +49,8 @@
         <strong><h3 id="titulo_sistema">Sistema de Agendamento e Gerenciamento (SAGe) </h3></strong>
         <p>Olá, aqui você pode agendar consultas de forma simples e rápida, click em cadastre-se e inicie o agendamento!</p>
 
+
+        <!--
         <div id="contatos">
           <div id="div-div-contatos">
             <h1>Número:999887766554433221</h1>
@@ -61,12 +62,14 @@
           </div>
           
         </div>
+        -->
+        
        
       </div>
       <div id="div-footer">
         
         <footer>
-          <p>&copy; 2024 Direitos Reservados Softex</p>
+          <p>© 2024 Direitos Reservados Softex</p>
       </footer>
     </div>
 

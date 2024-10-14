@@ -2,6 +2,10 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.contrib.auth.base_user import BaseUserManager
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
+from django.utils.timezone import timedelta
+from django.core.validators import MinValueValidator, MaxValueValidator
+
 
 class PacienteManager(BaseUserManager):
     """
@@ -40,7 +44,10 @@ class Paciente(AbstractBaseUser, PermissionsMixin):
     id = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=100)
     email = models.CharField(max_length=100, unique=True)
-    data_de_nascimento = models.DateField(null=False)
+    data_de_nascimento = models.DateField(
+        default=timezone.now,
+        help_text=f'eg. {str(timezone.now().date())}'
+    )
     cpf = models.CharField(max_length=11, unique=True)
     password = models.CharField(max_length=128)
 
