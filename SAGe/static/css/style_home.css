@@ -1,75 +1,75 @@
 *{
-  font-size: 1.2rem;
-}
-a:hover{
-    color: blue !important;
-
-}
-button{
-    border-radius: 6px !important;
-    margin: 2px;
-}
-
-input{
-  border-radius: 6px !important;
-}
-
-body{
-  background: url('https://images.unsplash.com/photo-1583947582886-f40ec95dd752?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-  color:black;  
-  background-repeat: no-repeat;
-  background-size: cover;
+    font-size: 1.2rem;
   }
-  /**/
-/*header*/
-#header{
-  background-color: rgb(25, 50, 0) !important;
-  opacity: 0.8;
-  color: black !important;
-  margin: 0%;
+  a:hover{
+      color: blue !important;
   
-}
-
-/*parte de cima*/
-#home-nav{
-  border: 2px solid white;
-  border-radius: 6px;
-  background-color: rgb(25, 50, 0) !important;
-  opacity: 0.8;
-}
-
-a.nav-link{ 
-  color: white !important;
-  border: 2px solid black;
-  border-radius: 6px ;
+  }
+  button{
+      border-radius: 6px !important;
+      margin: 2px;
+  }
   
-}
-
-a:hover{
-  transition: 1s;
-  background-color: rgb(0, 100, 0);
-  border-radius: 6px;
-
-}
-
-#img-tel-home {
-  border-radius: 50%; /* Define o raio da borda como 50% da largura da imagem */
-  width: 60px; /* Define a largura da imagem */
-  height: 60px; /* Define a altura da imagem */
-  float: right;
-}
-#div-footer{
-  margin-top: 450px;
-}
-#contatos{
-  display: none !important;  
-}
-#contatos:target{
-  display: inline !important;
-}
-#div-div-contatos{
-  color: black;
-  display:inline-block;
-  background-color: burlywood;
-  border: 2px solid black;
-}
+  input{
+    border-radius: 6px !important;
+  }
+  
+  body{
+    background: url('https://images.unsplash.com/photo-1583947582886-f40ec95dd752?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    color:black;  
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+    /**/
+  /*header*/
+  #header{
+    background-color: rgb(25, 50, 0) !important;
+    opacity: 0.8;
+    color: black !important;
+    margin: 0%;
+    
+  }
+  
+  /*parte de cima*/
+  #home-nav{
+    border: 2px solid white;
+    border-radius: 6px;
+    background-color: rgb(25, 50, 0) !important;
+    opacity: 0.8;
+  }
+  
+  a.nav-link{ 
+    color: white !important;
+    border: 2px solid black;
+    border-radius: 6px ;
+    
+  }
+  
+  a:hover{
+    transition: 1s;
+    background-color: rgb(0, 100, 0);
+    border-radius: 6px;
+  
+  }
+  
+  #img-tel-home {
+    border-radius: 50%; /* Define o raio da borda como 50% da largura da imagem */
+    width: 60px; /* Define a largura da imagem */
+    height: 60px; /* Define a altura da imagem */
+    float: right;
+  }
+  #div-footer{
+    margin-top: 450px;
+  }
+  #contatos{
+    display: none !important;  
+  }
+  #contatos:target{
+    display: inline !important;
+  }
+  #div-div-contatos{
+    color: black;
+    display:inline-block;
+    background-color: burlywood;
+    border: 2px solid black;
+  }

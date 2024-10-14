@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <!--
+    <form method="POST" action="{% url 'cadastro' %}">{% csrf_token %} 
+        <input type="text" placeholder="username" name="username">
+        <br>
+        <input type="password" placeholder="password" name="password">
+        <br>
+        <input type="email" placeholder="Email" name="email">
+        <br>
+        <input type="date" placeholder="Data de nascimento" name="data_de_nascimento">
+        <br>
+        <input type="text" placeholder="CPF" name="cpf">
+        <input type="submit" value="Cadastrar">
+    </form>
+    -->
+    
+
+</body>
+</html>
