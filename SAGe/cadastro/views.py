@@ -35,7 +35,10 @@ def cadastro(request):
         form = PacienteForm()
     return render(request, 'cadastro.html', {'form': form})
 
-
+def _cadastrar_medicos(request):
+    return render(request, 'cadastrar_medicos.html')
+    
+    
 '''def login(request):
     """
     View para efetuar o login de um paciente.

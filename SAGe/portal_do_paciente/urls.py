@@ -2,9 +2,11 @@ from django.urls import path, re_path, include
 from . import views
 
 urlpatterns = [
-    re_path(r'^portal_do_paciente/(?P<id>\d+)/', include([  # Inclui as URLs do 'portal_do_paciente'
-        path('', views.portal_do_paciente, name='portal_do_paciente'),  # URL padrão para o portal
-        path('atendimento/', views.atendimento, name='atendimento'), 
-        path('medicos/', views.medicos, name='medicos'), 
-    ])),
+    # Define a URL padrão para o portal, com o ID do paciente
+    path('<int:id>/', views.portal_do_paciente, name='portal_do_paciente'), 
+
+    # Define a URL para o cadastro de médicos, com o ID do paciente
+    path('<int:id>/cadastro_de_medicos/', views.cadastro_de_medicos, name='cadastro_de_medicos'),
+
+    # Adicione outras URLs aqui, se necessário
 ]

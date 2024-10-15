@@ -92,7 +92,6 @@ body{
   display: none;
 }
 #consultas:target{
-  
   padding: 10px;
   position: absolute;
   top: 50%;
@@ -102,9 +101,6 @@ body{
   background-color: #ddd;
   display: block;
 }
-
-
-
 
 /*_________ sumario*/
 .nav-menu {
@@ -123,6 +119,7 @@ body{
 }
   .titulo_portal_do_paciente{
     text-align: center  !important;
+    margin-top: -20px !important;
   }
   .hora_data {
     text-align: right; 

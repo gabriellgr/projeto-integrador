@@ -4,18 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciamento</title>
+    <title>Portal do paciente</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style_portal_do_paciente.css' %}">
+
+    <!--
     <script src="static/js/script_portal_do_paciente.js"></script>
+    -->
+
 </head>
 <body>
 
   <header class="portal_do_paciente p-3">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"><strong>Home</strong></a>
+        <a class="navbar-brand" href="#"><strong>Portal do paciente</strong></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -30,14 +34,15 @@
     </nav>
 </header>
 
-  <!--
-  <p >Olá, {{ username }}</p>
-  {% if message %}
-    <p style="font-size: 1.2rem;">{{ message }}</p>
-  {% endif %}
-  -->
-  <p style="color: red;">{{ name }}</p>
-  <h1 class="titulo_portal_do_paciente">Portal do paciente</h1>
+  <div id="div-ola-name" style="text-indent: 60px;">
+    <strong><p >Olá, {{ name }}</p></strong>
+    
+  </div>
+  
+  
+  <div class="titulo_portal_do_paciente">
+    <h1 >Portal do paciente</h1>
+  </div>
   <div id="div-data">
     <time id="data" datetime="{{ data|date:'Y-m-d' }}">{{ data|date:'d/m/Y' }}</time>
   </div>
@@ -56,7 +61,11 @@
               <li><a class="nav-menu-link" href="#atendimento">Marcar consulta</a></li>      
               <li><a class="nav-menu-link" href="#lista_de_medicos">Médicos disponíveis</a></li>      
               <li><a class="nav-menu-link" href="#paciente">Meus dados</a></li>        
-              <li><a class="nav-menu-link" href="#historico">Histórico de consultas</a></li>        
+              <li><a class="nav-menu-link" href="#historico">Histórico de consultas</a></li> 
+              {% if admin %}
+              <li><a class="nav-menu-link" href="{% url 'cadastro_de_medicos' id=paciente.id %}">Adicione um médico</a></li> 
+                
+              {% endif %}       
             </ol>
     
           </nav>     
