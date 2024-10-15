@@ -1,3 +1,161 @@
+# para cada link presente em suamrio:
+- crie uma mecîca com a qual toda vez que clicar no link deve aparecer a div correspondente e aclicar no x deve tornar o div invidivivelo(none) novamente, aplique esta mecaîca nops demasi links do sumario:
+
+- css
+```css
+*{
+    color:black;
+    font-size: 1.2rem;
+}
+body{
+    background:url('https://plus.unsplash.com/premium_photo-1682141162813-16fc10b5ba2f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') ;
+}
+
+/*__________________header*/
+
+
+/* Atualize o espaçamento da navbar para melhorar a aparência em dispositivos móveis */
+.portal_do_paciente .navbar {
+  background-color: gray !important;
+  padding: 1rem;
+  opacity: 0.8;
+}
+
+/* Estilo do texto da marca em dispositivos menores */
+.portal_do_paciente .navbar-brand {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Estilo dos links */
+.portal_do_paciente .navbar-nav .nav-item .nav-link {
+  color: #333;
+  font-weight: 500;
+}
+
+/* Cor ao passar o mouse */
+.portal_do_paciente .navbar-nav .nav-item .nav-link:hover {
+  color: #007bff;
+}
+
+/*__________targets________*/
+#lista_de_medicos{
+    display: none;
+}
+#lista_de_medicos:target{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+    background-color: #ddd;
+    display: block;
+}
+#paciente{
+    display: none;
+}
+#paciente:target{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+    background-color: #ddd;
+    display: block;
+}
+#historico{
+    display: none;
+}
+#historico:target{
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+    background-color: #ddd;
+    display: block;
+}
+#atendimento{
+    display: none;
+}
+
+#atendimento:target{
+    background-color: #ddd;
+    display: block;
+}
+
+#consultas{
+  display: none;
+}
+#consultas:target{
+  
+  padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+    background-color: #ddd;
+  display: block;
+}
+
+
+
+
+/*_________ sumario*/
+.nav-menu {
+  background-color: #f2f2f2; /* Adiciona cor de fundo ao menu */
+  padding: 20px;
+  border-right: 1px solid #ddd; /* Adiciona uma borda direita */
+  border-radius: 6px;
+}
+
+.nav-menu-link {
+  display: block; /* Faz com que os links ocupem toda a largura */
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  border-radius: 6px;
+}
+  .titulo_portal_do_paciente{
+    text-align: center  !important;
+  }
+  .hora_data {
+    text-align: right; 
+    font-size: 1.2rem;
+    color: #333; 
+    font-weight: bold;
+    
+  }
+  #div-data{
+    text-align: end;
+    margin-right: 30px;
+    margin-top: -20px;
+  }
+  #data{
+    font-weight:bolder;
+  }
+  /*--------------botoes*/
+  .button-close{
+    text-align: end;
+  }
+
+  #consultas-button-close,#pacientes-button-close,#historico-button-close,#atendimento-button-close{
+    background-color: #333 !important;
+    color: #fff;
+    padding: 0px 13px 0px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    align-items: end;
+  }
+```
+- html
+```
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +194,7 @@
     <p style="font-size: 1.2rem;">{{ message }}</p>
   {% endif %}
   -->
-  <p style="color: red;">{{ name }}</p>
+  
   <h1 class="titulo_portal_do_paciente">Portal do paciente</h1>
   <div id="div-data">
     <time id="data" datetime="{{ data|date:'Y-m-d' }}">{{ data|date:'d/m/Y' }}</time>
@@ -49,12 +207,10 @@
         
         <nav class="nav-menu">
             
-          <!-- Ainda fazendo -->
-
             <ol>
               <li><a class="nav-menu-link" href="#consultas">Consultas marcadas</a></li>        
-              <li><a class="nav-menu-link" href="#atendimento">Marcar consulta</a></li>      
-              <li><a class="nav-menu-link" href="#lista_de_medicos">Médicos disponíveis</a></li>      
+              <li><a class="nav-menu-link" href="#atendimento">Marcar consulta</a></li>        
+              <li><a class="nav-menu-link" href="#lista_de_medicos">Médicos disponíveis</a></li>
               <li><a class="nav-menu-link" href="#paciente">Meus dados</a></li>        
               <li><a class="nav-menu-link" href="#historico">Histórico de consultas</a></li>        
             </ol>
@@ -66,10 +222,6 @@
       <div class="col-md-9">
 
         <div id="lista_de_medicos">
-          <div class="button-close">
-            <a href="#"><button id="medicos-button-close">x</button></a>
-            
-          </div>
 
             <h3>Horários e funções </h3>
             *FAZER*
@@ -97,10 +249,6 @@
       
       
         <div id="paciente">
-          <div class="button-close">
-            <a href="#"><button id="paciente-button-close">x</button></a>
-            
-          </div>
           <h3>Seus dados</h3>
           <table class="table table-custom">
               <thead>
@@ -129,19 +277,12 @@
       </div>
       
         <div id="historico">
-          <div class="button-close">
-            <a href="#"><button id="historico-button-close">x</button></a>
-            
-          </div>
             <h3>Baixe aqui seu histórico de consultas</h3>
             <a href="{% static 'historico/sage.pdf' %}" download="historico">Histórico</a>
         </div>
       
         <div id="atendimento">
-          <div class="button-close">
-            <a href="#"><button id="atendimento-button-close">x</button></a>
-            
-          </div>
+          
           <h1>Solicite atendimento</h1>
       
           <div class="input-group rounded">
@@ -160,8 +301,7 @@
       
         <div id="consultas">
           <div class="button-close">
-            <a href="#"><button id="consultas-button-close">x</button></a>
-            
+            <button id="consultas-button-close">x</button>
           </div>
           
           <h2>Suas consultas marcadas</h2>
@@ -182,3 +322,5 @@
           
 </body>
 </html>
+```
+- se for necessrio pode usar javascript
