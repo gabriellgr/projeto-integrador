@@ -34,9 +34,9 @@ def portal_do_paciente(request, id):
     if paciente.nome == 'admin':
         IS_ADMIN = True
         
-    print('Tipo de variavel - nome - senha ')
-    print(type(IS_ADMIN), type(paciente.nome), type(paciente.password))
-    print(IS_ADMIN, paciente.nome, paciente.password)
+    #print('Tipo de variavel - nome - senha ')
+    #print(type(IS_ADMIN), type(paciente.nome), type(paciente.password))
+    #print(IS_ADMIN, paciente.nome, paciente.password)
     context = {
         'paciente': paciente,  # Adicione o objeto paciente ao contexto
         'data':DATA, # Data
