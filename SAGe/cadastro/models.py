@@ -1,29 +1,26 @@
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
-from django.contrib.auth.base_user import BaseUserManager
-from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
-from django.utils.timezone import timedelta
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.utils.translation import gettext_lazy as _
 
 
 class PacienteManager(BaseUserManager):
     """
     Gerenciador de usuários personalizados para o modelo Paciente.
     """
-    def create_user(self, email, password, **extra_fields):
+    def create_user(self, cpf, password, **extra_fields):
         """
         Cria e salva um novo usuário.
         """
-        if not email:
-            raise ValueError(_('O endereço de email é obrigatório'))
-        email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
+        if not cpf:
+            raise ValueError(_('O CPF é obrigatório'))
+        cpf = self.normalize_email(cpf)  # Use normalize_email para formatar o CPF (opcional)
+        user = self.model(cpf=cpf, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, password, **extra_fields):
+    def create_superuser(self, cpf, password, **extra_fields):
         """
         Cria e salva um novo superusuário.
         """
@@ -35,7 +32,7 @@ class PacienteManager(BaseUserManager):
         if extra_fields.get('is_superuser') is not True:
             raise ValueError(_('Superusuário precisa ter is_superuser=True.'))
 
-        return self.create_user(email, password, **extra_fields)
+        return self.create_user(cpf, password, **extra_fields)
 
 class Paciente(AbstractBaseUser, PermissionsMixin):
     """
@@ -43,7 +40,7 @@ class Paciente(AbstractBaseUser, PermissionsMixin):
     """
     id = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=100)
-    email = models.CharField(max_length=100, unique=True)
+    email = models.CharField(max_length=100, unique=True)  # Email pode ser opcional
     data_de_nascimento = models.DateField(
         default=timezone.now,
         help_text=f'eg. {str(timezone.now().date())}'
@@ -51,37 +48,22 @@ class Paciente(AbstractBaseUser, PermissionsMixin):
     cpf = models.CharField(max_length=11, unique=True)
     password = models.CharField(max_length=128)
 
-    USERNAME_FIELD = 'cpf'
-    REQUIRED_FIELDS = ['nome', 'password']
+    # Adiciona os campos is_staff e is_superuser
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+
+    USERNAME_FIELD = 'cpf'  # Define o CPF como o campo de identificação principal
+    REQUIRED_FIELDS = ['email', 'password']  # Email agora é opcional
 
     objects = PacienteManager()
-    groups = models.ManyToManyField(
-        'auth.Group',
-        verbose_name='groups',
-        blank=True,
-        related_name='paciente_set',  # Nome exclusivo para o acessor inverso
-    )
-    user_permissions = models.ManyToManyField(
-        'auth.Permission',
-        verbose_name='user permissions',
-        blank=True,
-        related_name='paciente_set',  # Nome exclusivo para o acessor inverso
-    )
+    # ... (restante do código)
+
     def __str__(self):
         return self.nome
 
-    def has_perm(self, perm, obj=None):
-        """
-        Retorna se o usuário possui a permissão específica.
-        """
-        return self.is_superuser
+    # ... (restante do código) 
 
-    def has_module_perms(self, app_label):
-        """
-        Retorna se o usuário possui permissões para o aplicativo específico.
-        """
-        return self.is_superuser
-    
+    # ... (restante do código)     
 class Medicos(models.Model):
     id = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=100)
