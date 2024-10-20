@@ -24,7 +24,7 @@ class PacienteForm(forms.ModelForm):
             'cpf': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
-    data_de_nascimento = forms.DateField(
+        data_de_nascimento = forms.DateField(
         widget=forms.DateInput(
             format="%Y-%m-%d",  # Use o formato padrão do Django
             attrs={'type': 'date'}

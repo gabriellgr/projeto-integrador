@@ -3,7 +3,6 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-
 class PacienteManager(BaseUserManager):
     """
     Gerenciador de usuários personalizados para o modelo Paciente.

@@ -25,6 +25,12 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'home' %}">Home</a>
             </li>
+            {% if admin %}
+              <li class="nav-item">
+              <a class="nav-link" href="http://127.0.0.1:8000/admin" target="blank">Admin</a>
+            </li>
+                
+              {% endif %} 
           </ul>
         </div>
       </div>
