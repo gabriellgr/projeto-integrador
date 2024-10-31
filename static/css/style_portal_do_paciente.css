@@ -1,0 +1,159 @@
+*{
+    color:black;
+    font-size: 1.2rem;
+}
+body{
+    background:url('https://plus.unsplash.com/premium_photo-1682141162813-16fc10b5ba2f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') ;
+    background-size:cover ;
+}
+
+/*__________________header*/
+
+
+/* Atualize o espaçamento da navbar para melhorar a aparência em dispositivos móveis */
+.portal_do_paciente .navbar {
+  background-color: gray !important;
+  padding: 1rem;
+  opacity: 0.8;
+}
+
+/* Estilo do texto da marca em dispositivos menores */
+.portal_do_paciente .navbar-brand {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Estilo dos links */
+.portal_do_paciente .navbar-nav .nav-item .nav-link {
+  color: #333;
+  font-weight: 500;
+}
+
+/* Cor ao passar o mouse */
+.portal_do_paciente .navbar-nav .nav-item .nav-link:hover {
+  color: #007bff;
+}
+
+/*__________targets________*/
+#lista_de_medicos{
+    display: none;
+}
+#lista_de_medicos:target{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+    background-color: #ddd;
+    display: block;
+}
+#paciente{
+    display: none;
+}
+#paciente:target{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+    background-color: #ddd;
+    display: block;
+}
+#historico{
+    display: none;
+}
+#historico:target{
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+    background-color: #ddd;
+    display: block;
+}
+#atendimento{
+    display: none;
+}
+
+#atendimento:target{
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 6px;
+  background-color: #ddd;
+  display: block;
+}
+
+#consultas{
+  display: none;
+}
+#consultas:target{
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 6px;
+  background-color: #ddd;
+  display: block;
+}
+
+/*_________ sumario*/
+.nav-menu {
+  background-color: #f2f2f2; /* Adiciona cor de fundo ao menu */
+  padding: 20px;
+  border-right: 1px solid #ddd; /* Adiciona uma borda direita */
+  border-radius: 6px;
+}
+
+.nav-menu-link {
+  display: block; /* Faz com que os links ocupem toda a largura */
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  border-radius: 6px;
+}
+.nav-menu-link:hover{
+  color: white;
+  background-color: #333;
+}
+
+  .titulo_portal_do_paciente{
+    text-align: center  !important;
+    margin-top: -20px !important;
+  }
+  .hora_data {
+    text-align: right; 
+    font-size: 1.2rem;
+    color: #333; 
+    font-weight: bold;
+    
+  }
+  #div-data{
+    text-align: end;
+    margin-right: 30px;
+    margin-top: -20px;
+  }
+  #data{
+    font-weight:bolder;
+  }
+  /*--------------botoes*/
+  .button-close{
+    text-align: end;
+  }
+
+  #consultas-button-close,#paciente-button-close,#historico-button-close,#atendimento-button-close, #medicos-button-close {
+    background-color: #333 !important;
+    color: #fff;
+    padding: 0px 13px 0px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    align-items: end;
+  }
