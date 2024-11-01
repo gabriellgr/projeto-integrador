@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'portal_do_paciente',
     'pacientes',
     'medicos',
-  #  'agendamento',
+    'agendamentos',
 ]
 
 MIDDLEWARE = [
