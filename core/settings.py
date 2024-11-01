@@ -38,9 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
-    'cadastro',
-    'login',
+    #'cadastro',
+    #'login',
     'portal_do_paciente',
+    'pacientes',
+    'medicos',
+  #  'agendamento',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +58,7 @@ MIDDLEWARE = [
 
 
 #Incluindo o modelo Paciente no AUTH_USER_MODEL
-AUTH_USER_MODEL = 'cadastro.Paciente'
+AUTH_USER_MODEL = 'pacientes.Paciente'
 
 ROOT_URLCONF = 'core.urls'
 
@@ -126,7 +129,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    
     os.path.join(BASE_DIR, 'static')
 ]
 

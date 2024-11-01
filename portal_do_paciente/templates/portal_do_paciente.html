@@ -85,23 +85,23 @@
           </div>
 
             <h3>Horários e funções </h3>
-            *FAZER*
-             <strong>Lista de médicos, funções e horário de atendimento </strong>
+            
+             <strong>Médicos diponíveis</strong>
       
              <table class="table table-custom">
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Função</th>
-                        <th>Consultas marcadas</th>
+                        <th>Especialidade</th>
+                        <th>CRM</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for medico in medicos %}
                         <tr>
                             <td>{{ medico.nome }}</td> 
-                            <td>{{ medico.funcao }}</td>
-                            <td>{{ medico.data_consulta }}</td> 
+                            <td>{{ medico.especialidade }}</td>
+                            <td>{{ medico.crm }}</td> 
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -173,7 +173,7 @@
           
           <h2>Suas consultas marcadas</h2>
           fazer vizualização
-          <p>data: </p>
+          
         </div>
       </div>
 
