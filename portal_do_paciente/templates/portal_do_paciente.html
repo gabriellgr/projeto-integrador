@@ -100,7 +100,7 @@
             <tr>
               <th>Id</th>
               <th>Nome</th>
-              <th>Idade</th>
+              <th>Data de nascimento</th>
               <th>CPF</th>
               <th>Email</th>
             </tr>
@@ -108,8 +108,8 @@
           <tbody>
             <tr>
               <td>{{ paciente.id }}</td>
-              <td>{{ paciente.nome }}</td>
-              <td>{{ paciente.data_de_nascimento }}</td>
+              <td>{{ paciente.nome|title }}</td>
+              <td>{{ paciente.data_de_nascimento|date }}</td>
               <td>{{ paciente.cpf }}</td>
               <td>{{ paciente.email }}</td>
             </tr>
@@ -122,43 +122,32 @@
         <div class="button-close">
           <a href="#"><button id="suas-consultas-button-close">x</button></a>
         </div>
-        <h3>Suas consultas marcadas</h3>
-        
+        <h3>Consultas marcadas</h3>
         
         <table class="table table-custom">
           <thead>
             <tr>
-              <th>Nome do medico(a)</th>
+              <th>Nome do médico(a)</th>
               <th>Especialidade</th>
               <th>Data da consulta</th>
+              <th>Horário da consulta</th>
+              
             </tr>
           </thead>
           <tbody>
-
-    {% comment "" %}
-                   {% for agendamento in agendamentos %}
-            <p>tese</p>
-            <p>paciente id: {{ paciente.nome }}, agendamento id: {{ agendamento.paciente }}</p>
-              {% if agendamento.paciente == paciente.nome%}
-              <p>tese2</p>
-                {% for medico in medicos%}
-                  {% if medico.id == agendamento.medico %}
-                  <p>tese 3</p>
-                    <td>{{ medico.nome }}</td>
-                    <td>{{ medico.especialidade }}</td>
-                    <td>{{ agendamento.data }}</td>
-                  {% endif %}
-                {% endfor %}
+            {% for agendamento in agendamentos %}
+              {% if agendamento.paciente.id == paciente.id %}
+                <tr>
+                  <td>{{ agendamento.medico.nome }}</td>
+                  <td>{{ agendamento.medico.especialidade }}</td>
+                  <td>{{ agendamento.data }}</td>
+                  <td>{{ agendamento.hora }}</td>
+              
+                </tr>
               {% endif %}
             {% endfor %}
-     
-    {% endcomment %}
-            
-            
-
           </tbody>
         </table>
-  
         <br>
         <br>
 
