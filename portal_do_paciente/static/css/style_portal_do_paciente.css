@@ -35,6 +35,22 @@ body{
 }
 
 /*__________targets________*/
+
+#suas_consultas {
+  display: none ; /* Oculta a seção inicialmente */
+}
+
+#suas_consultas:target {
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+    background-color: #ddd;
+    display: block;
+}
+
 #lista_de_medicos{
     display: none;
 }
@@ -61,34 +77,6 @@ body{
     background-color: #ddd;
     display: block;
 }
-#historico{
-    display: none;
-}
-#historico:target{
-    padding: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 6px;
-    background-color: #ddd;
-    display: block;
-}
-#atendimento{
-    display: none;
-}
-
-#atendimento:target{
-  padding: 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 6px;
-  background-color: #ddd;
-  display: block;
-}
-
 #consultas{
   display: none;
 }
@@ -147,7 +135,7 @@ body{
     text-align: end;
   }
 
-  #consultas-button-close,#paciente-button-close,#historico-button-close,#atendimento-button-close, #medicos-button-close {
+  #consultas-button-close,#paciente-button-close,#historico-button-close,#atendimento-button-close, #medicos-button-close, #suas-consultas-button-close {
     background-color: #333 !important;
     color: #fff;
     padding: 0px 13px 0px;

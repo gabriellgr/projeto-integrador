@@ -18,11 +18,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+                    
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'agendar_consulta' %}">Listar Agendamentos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-danger" href="#">Sair</a>
+                        <a class="btn btn-danger" href="{% url 'portal_do_paciente' id=paciente.id %}">Voltar</a>
                     </li>
                 </ul>
             </div>
@@ -32,7 +30,7 @@
     <!-- Container do Formulário -->
     <div class="container mt-5">
         <h1>Agendar Consulta</h1>
-        <form method="POST">
+        <form method="POST" >
             {% csrf_token %}
             <div class="mb-3">
                 <label for="nomePaciente" class="form-label">Nome do Paciente</label>
