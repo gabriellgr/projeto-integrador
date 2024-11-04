@@ -102,3 +102,6 @@ def home(request):
 
 def teste(request):
     return render(request, 'teste.html')
+
+def view(request):
+    return render(request, 'administracao.html')

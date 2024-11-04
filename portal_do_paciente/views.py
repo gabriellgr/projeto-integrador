@@ -49,3 +49,4 @@ def cadastro_de_medicos(request, id):
         'paciente': paciente,  # Adicione o objeto paciente ao contexto
     }
     return render(request, 'cadastrar_medicos.html', context)
+
