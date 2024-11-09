@@ -2,6 +2,8 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from django.core.validators import MinLengthValidator, RegexValidator
+
 
 # Create your models here.
 class PacienteManager(BaseUserManager):
@@ -39,7 +41,16 @@ class Paciente(AbstractBaseUser, PermissionsMixin):
     Modelo de usuário Paciente.
     """
     id = models.AutoField(primary_key=True)
-    nome = models.CharField(max_length=100)
+    nome = models.CharField(
+        max_length=100,
+        validators=[
+            RegexValidator(
+                regex='^[a-zA-Z\s]+$',
+                message='O nome deve conter apenas letras e espaços.',
+                code='invalid_name'
+            )
+        ]
+    )
     email = models.EmailField(
         max_length=100, 
         unique=True, 
@@ -50,9 +61,30 @@ class Paciente(AbstractBaseUser, PermissionsMixin):
         default=timezone.now,
         help_text=f'eg. {str(timezone.now().date())}'
     )
-    cpf = models.CharField(max_length=11, unique=True, null=False, blank=False)
-    password = models.CharField(max_length=128)  # Armazena hash da senha
-    
+    cpf = models.CharField(
+        max_length=14,
+        unique=True,
+        null=False,
+        blank=False,
+        validators=[
+            MinLengthValidator(
+                14,
+                message='O CPF deve ter 14 dígitos .'  
+            )
+        ]
+    )
+    password = models.CharField(
+        max_length=25,
+        unique=True,
+        null=False,
+        blank=False,
+        validators=[
+            MinLengthValidator(
+                8,
+                message='A senha deve ter pelo menos 8 dígitos.'  
+            )
+        ]
+    )
     # Adiciona os campos is_staff e is_superuser
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)

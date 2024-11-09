@@ -4,12 +4,21 @@ from django.contrib import messages
 from pacientes.forms import PacienteForm
 from pacientes.models import Paciente
 
+def remover_formatacao_cpf(cpf):
+  """
+  Remove pontos e traços de um CPF formatado.
+
+  Args:
+      cpf: O CPF formatado (ex: '123.456.789-00').
+
+  Returns:
+      O CPF sem formatação (ex: '12345678900').
+  """
+  return cpf.replace('.', '').replace('-', '')
 
 
-# Create your views here.
 
 def home(request):
-
     context ={
         #'paciente':paciente,#Chama-se com a chave, não o valor
     }
@@ -25,9 +34,12 @@ def _login_(request):
         cpf = request.POST.get('cpf')
         password = request.POST.get('password')
 
+        print(password)
+        print(cpf)
         # Autentica o usuário usando CPF (definido como username no modelo) e senha
         user = authenticate(username=cpf, password=str(password)) 
         print(user)
+
         if user is not None:
             login(request, user)
             messages.success(request, 'Login realizado com sucesso!')
@@ -41,11 +53,12 @@ def _login_(request):
 def cadastro(request):
     """
     View para cadastrar um novo paciente.
-    """
+   """
     if request.method == 'POST':
         form = PacienteForm(request.POST)
         if form.is_valid():
             # Cria o novo paciente no banco de dados
+            print(form)
             paciente = form.save(commit=False)  # Cria o objeto Paciente, mas não salva ainda
             
             # Define a senha usando set_password
@@ -55,11 +68,16 @@ def cadastro(request):
             paciente.data_de_nascimento = form.cleaned_data['data_de_nascimento']
             
             # Salva o paciente no banco de dados
+            paciente.is_staff = False
+            paciente.is_superuser = False
+            paciente.is_active = True
+    
             paciente.save()
 
             # Faz o login do paciente recém-cadastrado
             login(request, paciente) 
             messages.success(request, 'Paciente cadastrado com sucesso!')
+
             return redirect('login')  # Redireciona para a página inicial após o cadastro
         else:
             # Imprime os erros do formulário para debugging

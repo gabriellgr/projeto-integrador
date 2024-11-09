@@ -3,7 +3,8 @@
     font-size: 1.2rem;
 }
 body{
-    background:url('https://plus.unsplash.com/premium_photo-1682141162813-16fc10b5ba2f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') ;
+  background-color: rgb(200,200,250);
+    /*background:url('https://plus.unsplash.com/premium_photo-1682141162813-16fc10b5ba2f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') ;*/
     background-size:cover ;
 }
 
@@ -41,7 +42,7 @@ body{
 }
 
 #suas_consultas:target {
-  position: absolute;
+    position: absolute;
     top: 50%;
     left: 50%;
     padding: 10px;
@@ -76,6 +77,8 @@ body{
     border-radius: 6px;
     background-color: #ddd;
     display: block;
+    width: 1000px;
+    left: 980px;
 }
 #consultas{
   display: none;
@@ -93,7 +96,10 @@ body{
 
 /*_________ sumario*/
 .nav-menu {
-  background-color: #f2f2f2; /* Adiciona cor de fundo ao menu */
+  margin-left: -10px;
+  background-color: rgb(0,150,250); /* Adiciona cor de fundo ao menu */
+  border: black 2px solid;
+  opacity: 0.8;
   padding: 20px;
   border-right: 1px solid #ddd; /* Adiciona uma borda direita */
   border-radius: 6px;
@@ -103,7 +109,7 @@ body{
   display: block; /* Faz com que os links ocupem toda a largura */
   padding: 10px;
   text-decoration: none;
-  color: #333;
+  color: black;
   border-radius: 6px;
 }
 .nav-menu-link:hover{
@@ -145,3 +151,16 @@ body{
     font-size: 1.2rem;
     align-items: end;
   }
+
+/*
+.background{
+  opacity: 0.7;
+  border-radius: 6px;
+  border: rgb(0,100,150) 2px solid ;
+  width: 105vh;
+  height: 60vh;
+  padding: 15px;
+  margin: 0%;
+  display: flex;
+}
+*/

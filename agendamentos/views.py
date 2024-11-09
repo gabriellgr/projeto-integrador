@@ -7,7 +7,9 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def agendar_consulta(request, id):
-    # Verificar se o paciente já está cadastrado
+    
+    if request.user.id != int(id):  
+        return redirect('login')  
     try:
         paciente = Paciente.objects.get(id=id)
     except Paciente.DoesNotExist:
@@ -16,11 +18,10 @@ def agendar_consulta(request, id):
     if request.method == 'POST':
         nome_paciente = request.POST.get('nome_paciente')
         cpf = request.POST.get('cpf')
-        data_consulta = request.POST.get('data_consulta')  # Mantém o formato original
+        data_consulta = request.POST.get('data_consulta')  
         hora_consulta = request.POST.get('hora_consulta')
         id_medico = request.POST.get('id_medico')
 
-        # Validação básica de campos obrigatórios
         if not nome_paciente or not cpf or not data_consulta or not hora_consulta or not id_medico:
             messages.error(request, "Todos os campos são obrigatórios.")
             return redirect('agendar_consulta', id=id)

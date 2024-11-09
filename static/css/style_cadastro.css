@@ -56,6 +56,9 @@ header {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra sutil */
+    width: 80%; /* Define a largura do formulário */
+    max-width: 500px; /* Define a largura máxima do formulário */
+    margin-top: 20px; /* Adiciona margem superior para espaçamento do header */
 }
 
 .form-group {
@@ -80,7 +83,7 @@ header {
 /* Responsividade */
 @media (max-width: 768px) { /* Para telas menores que 768px */
   #div-form-cadastro {
-    width: 100%; /* Ocupa toda a largura da tela */
+    width: 90%; /* Ocupa 90% da largura da tela */
     padding: 10px; /* Reduz o padding para telas menores */
   }
   h1 {

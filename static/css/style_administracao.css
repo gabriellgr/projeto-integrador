@@ -85,7 +85,6 @@ body {
 }
 #documentacao > p{
     color :black;
-
 }
 #documentacao:target{
     display: flex;

@@ -28,11 +28,8 @@ def portal_do_paciente(request, id):
     if paciente.nome == 'admin':
         IS_ADMIN = True
         
-    #print('Tipo de variavel - nome - senha ')
-    #print(type(IS_ADMIN), type(paciente.nome), type(paciente.password))
-    #print(IS_ADMIN, paciente.nome, paciente.password)
 
-    #Variavei passadas ao template
+    #Variaves passadas ao template
     context = {
         'paciente': paciente,  # Adicione o objeto paciente ao contexto
         'data':DATA, # Data
@@ -43,10 +40,14 @@ def portal_do_paciente(request, id):
     }
     return render(request, 'portal_do_paciente.html', context)
 
+@login_required
 def cadastro_de_medicos(request, id):
-    paciente = Paciente.objects.get(id=int(id))  # Obtenha o paciente
-    context = {
-        'paciente': paciente,  # Adicione o objeto paciente ao contexto
-    }
-    return render(request, 'cadastrar_medicos.html', context)
+    if request.user.id != int(id):  # Converta o id para inteiro e compare
+        return redirect('login')  # Redirecione para a página de login
+    else:
+        paciente = Paciente.objects.get(id=int(id))  # Obtenha o paciente
+        context = {
+            'paciente': paciente,  # Adicione o objeto paciente ao contexto
+        }
+        return render(request, 'cadastrar_medicos.html', context)
 
