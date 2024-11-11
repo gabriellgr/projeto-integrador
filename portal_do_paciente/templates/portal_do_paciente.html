@@ -46,124 +46,134 @@
 
 <!--<time class="hora_data" datetime="{{ data_hora|date:'Y-m-dTH:i:s' }}">{{ data_hora|date:'d/m/Y H:i' }}</time>-->
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-3">
-      <nav class="nav-menu">
-        <ol>
-          <li><a class="nav-menu-link" href="#suas_consultas">Suas consultas</a></li>
-          <li><a class="nav-menu-link" href="#lista_de_medicos">Médicos disponíveis</a></li>
-          <li><a class="nav-menu-link" href="#paciente">Meus dados</a></li>
-          <li><a class="nav-menu-link" href="{% url 'agendar_consulta' id=paciente.id %}">Agendar nova consulta</a></li>
+<div class="main">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <nav class="nav-menu">
+          <ol>
+            <li><a class="nav-menu-link" href="#suas_consultas">Suas consultas</a></li>
+            <li><a class="nav-menu-link" href="#lista_de_medicos">Médicos disponíveis</a></li>
+            <li><a class="nav-menu-link" href="#paciente">Meus dados</a></li>
+            <li><a class="nav-menu-link" href="{% url 'agendar_consulta' id=paciente.id %}">Agendar nova consulta</a></li>
+            <li><a class="nav-menu-link" href="#teste">teste</a></li>
+            
+            {% if admin %}
+            <li><a class="nav-menu-link" href="{% url 'cadastro_de_medicos' id=paciente.id %}">Adicione um médico</a></li>
+            {% endif %}
+          </ol>
+        </nav>
+      </div>
+  
+      
+      <div class="container">
+        <div class="background">
           
-          {% if admin %}
-          <li><a class="nav-menu-link" href="{% url 'cadastro_de_medicos' id=paciente.id %}">Adicione um médico</a></li>
-          {% endif %}
-        </ol>
-      </nav>
+        </div>
+        
+        <div id="lista_de_medicos">
+          <div class="button-close">
+            <a href="#"><button id="medicos-button-close">x</button></a>
+          </div>
+          <h3>Médicos diponíveis </h3>
+        
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Especialidade</th>
+                <th>CRM</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for medico in medicos %}
+              <tr>
+                <td>{{ medico.nome }}</td>
+                <td>{{ medico.especialidade }}</td>
+                <td>{{ medico.crm }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+  
+        <div id="paciente">
+          <div class="button-close">
+            <a href="#"><button id="paciente-button-close">x</button></a>
+          </div>
+          <h3>Seus dados</h3>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Data de nascimento</th>
+                {% comment %}
+                <th>CPF</th>
+                {% endcomment %}
+                
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ paciente.nome|title }}</td>               
+                <td>{{ paciente.data_de_nascimento | date:'d/m/Y' }}</td>
+                {% comment %}
+                <td>{{ paciente.cpf }}</td>
+                {% endcomment %}
+                <td>{{ paciente.email }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        
+        <div id="suas_consultas">
+          <div class="button-close">
+            <a href="#"><button id="suas-consultas-button-close">x</button></a>
+          </div>
+          <h3>Consultas marcadas</h3>
+          
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nome do médico(a)</th>
+                <th>Especialidade</th>
+                <th>Data da consulta</th>
+                <th>Horário da consulta</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              {% for agendamento in agendamentos %}
+                {% if agendamento.paciente.id == paciente.id %}
+                  <tr>
+                    <td>{{ agendamento.medico.nome }}</td>
+                    <td>{{ agendamento.medico.especialidade }}</td>
+                    <td>{{ agendamento.data | date:'d/m/Y'}}</td>
+                    <td>{{ agendamento.hora|date:"H:i" }}</td> 
+                  </tr>
+                {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+          <br>
+          <br>
+  
+          <div id="historico">
+            <h3>Baixe aqui seu histórico de consultas</h3>
+            <br>
+            <a href="{% static 'historico/sage.pdf' %}" download="historico">Histórico</a>
+          </div>
+          
+        </div>
+        <div id="teste">
+          <h1>teste</h1>
+        </div>
+        
     </div>
-
-    
-    <div class="col-md-9">
-      <div class="background">
-        
-      </div>
-      
-      <div id="lista_de_medicos">
-        <div class="button-close">
-          <a href="#"><button id="medicos-button-close">x</button></a>
-        </div>
-        <h3>Horários e funções </h3>
-        <strong>Médicos diponíveis</strong>
-        <table class="table table-custom">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Especialidade</th>
-              <th>CRM</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for medico in medicos %}
-            <tr>
-              <td>{{ medico.nome }}</td>
-              <td>{{ medico.especialidade }}</td>
-              <td>{{ medico.crm }}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-
-      <div id="paciente">
-        <div class="button-close">
-          <a href="#"><button id="paciente-button-close">x</button></a>
-        </div>
-        <h3>Seus dados</h3>
-        <table class="table table-custom">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Nome</th>
-              <th>Data de nascimento</th>
-              <th>CPF</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{{ paciente.id }}</td>
-              <td>{{ paciente.nome|title }}</td>
-              <td>{{ paciente.data_de_nascimento|date }}</td>
-              <td>{{ paciente.cpf }}</td>
-              <td>{{ paciente.email }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      
-      <div id="suas_consultas">
-        <div class="button-close">
-          <a href="#"><button id="suas-consultas-button-close">x</button></a>
-        </div>
-        <h3>Consultas marcadas</h3>
-        
-        <table class="table table-custom">
-          <thead>
-            <tr>
-              <th>Nome do médico(a)</th>
-              <th>Especialidade</th>
-              <th>Data da consulta</th>
-              <th>Horário da consulta</th>
-              
-            </tr>
-          </thead>
-          <tbody>
-            {% for agendamento in agendamentos %}
-              {% if agendamento.paciente.id == paciente.id %}
-                <tr>
-                  <td>{{ agendamento.medico.nome }}</td>
-                  <td>{{ agendamento.medico.especialidade }}</td>
-                  <td>{{ agendamento.data }}</td>
-                  <td>{{ agendamento.hora }}</td>
-                </tr>
-              {% endif %}
-            {% endfor %}
-          </tbody>
-        </table>
-        <br>
-        <br>
-
-        <div id="historico">
-          <h3>Baixe aqui seu histórico de consultas</h3>
-          <a href="{% static 'historico/sage.pdf' %}" download="historico">Histórico</a>
-        </div>
-
-      </div>
-
-      
   </div>
+  
 </div>
 
 
