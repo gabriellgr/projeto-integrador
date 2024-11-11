@@ -4,6 +4,7 @@ from .models import AgendamentoConsulta
 from pacientes.models import Paciente
 from medicos.models import Medico
 from django.contrib.auth.decorators import login_required
+from datetime import time
 
 @login_required
 def agendar_consulta(request, id):
@@ -16,13 +17,11 @@ def agendar_consulta(request, id):
         return redirect('cadastro')
 
     if request.method == 'POST':
-        nome_paciente = request.POST.get('nome_paciente')
-        cpf = request.POST.get('cpf')
         data_consulta = request.POST.get('data_consulta')  
         hora_consulta = request.POST.get('hora_consulta')
         id_medico = request.POST.get('id_medico')
 
-        if not nome_paciente or not cpf or not data_consulta or not hora_consulta or not id_medico:
+        if not data_consulta or not hora_consulta or not id_medico:
             messages.error(request, "Todos os campos são obrigatórios.")
             return redirect('agendar_consulta', id=id)
 
@@ -52,9 +51,19 @@ def agendar_consulta(request, id):
     # Carregar a página de agendamento
     medicos = Medico.objects.all()  # Listar médicos para o formulário
     
+    HORARIOS_MAP = {
+    "1": time(8, 0),    # 08:00 às 09:00
+    "2": time(9, 0),    # 09:00 às 10:00
+    "3": time(10, 0),   # 10:00 às 11:00
+    "4": time(11, 0),   # 11:00 às 12:00
+    "5": time(12, 0),   # 12:00 às 13:00
+    "6": time(13, 0),   # 13:00 às 14:00
+}
+
     context = {
         'paciente': paciente,
         'medicos': medicos,
+        'horarios': HORARIOS_MAP,
     }
 
     return render(request, 'agendamento.html', context)

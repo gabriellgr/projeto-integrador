@@ -33,20 +33,17 @@
         <form method="POST" >
             {% csrf_token %}
             <div class="mb-3">
-                <label for="nomePaciente" class="form-label">Nome do Paciente</label>
-                <input type="text" class="form-control" id="nomePaciente" name="nome_paciente" required>
-            </div>
-            <div class="mb-3">
-                <label for="cpf" class="form-label">CPF</label>
-                <input type="text" class="form-control" id="cpf" name="cpf" maxlength="14" required>
-            </div>
-            <div class="mb-3">
                 <label for="dataConsulta" class="form-label">Data da Consulta</label>
                 <input type="date" class="form-control" id="dataConsulta" name="data_consulta" required>
             </div>
             <div class="mb-3">
                 <label for="horaConsulta" class="form-label">Hora da Consulta</label>
-                <input type="time" class="form-control" id="horaConsulta" name="hora_consulta" required>
+                <select type="time" class="form-control" id="hora_consulta" name="hora_consulta" required>
+                    <option value="" selected disabled>Horário</option>
+                    {% for key, value in horarios.items %}
+                        <option value="{{ key }}">{{ value }}</option>
+                    {% endfor %}
+                </select>
             </div>
             <div class="mb-3">
                 <label for="medico" class="form-label">Médico</label>
