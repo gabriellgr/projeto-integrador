@@ -51,21 +51,13 @@
     <div class="row">
       <div class="col-md-3">
         <nav class="nav-menu">
-          <ol>
-            <li><a class="nav-menu-link" href="#suas_consultas">Suas consultas</a></li>
-            <li><a class="nav-menu-link" href="#lista_de_medicos">Médicos disponíveis</a></li>
-            <li><a class="nav-menu-link" href="#paciente">Meus dados</a></li>
-            <li><a class="nav-menu-link" href="{% url 'agendar_consulta' id=paciente.id %}">Agendar nova consulta</a></li>
-            <li><a class="nav-menu-link" href="#teste">teste</a></li>
-            
-            {% if admin %}
-            <li><a class="nav-menu-link" href="{% url 'cadastro_de_medicos' id=paciente.id %}">Adicione um médico</a></li>
-            {% endif %}
-          </ol>
+           <a class="nav-menu-link" href="#suas_consultas">Suas consultas</a>
+           <a class="nav-menu-link" href="#lista_de_medicos">Médicos disponíveis</a>
+           <a class="nav-menu-link" href="#paciente">Meus dados</a>
+          <a class="nav-menu-link" href="{% url 'agendar_consulta' id=paciente.id %}">Agendar nova consulta</a>
+          <a class="nav-menu-link" href="#teste">teste</a>
         </nav>
       </div>
-  
-      
       <div class="container">
         <div class="background">
           
