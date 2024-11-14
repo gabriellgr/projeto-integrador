@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import AgendamentoConsulta
@@ -67,3 +68,6 @@ def agendar_consulta(request, id):
     }
 
     return render(request, 'agendamento.html', context)
+
+###No app portal do paciente
+

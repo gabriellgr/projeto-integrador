@@ -9,24 +9,26 @@
 <link rel="stylesheet" href="{% static 'css/style_portal_do_paciente.css' %}">
 
 
-<header class="portal_do_paciente p-3">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><strong>Portal do Paciente</strong></a>
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'images/portal_do_paciente_icon.png' %}" alt="home" width="30" height="30">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav">  
           <li class="nav-item">
             <a class="nav-link" href="{% url 'home' %}">Home</a>
           </li>
-          {% if admin %}
           <li class="nav-item">
-            <a class="nav-link" href="http://127.0.0.1:8000/admin" target="blank">Admin</a>
+            <a class="nav-link" href="{% url 'home' %}">Log out</a>
           </li>
-          {% endif %}
+          
         </ul>
+        
       </div>
     </div>
   </nav>
@@ -37,12 +39,11 @@
 </div>
 
 <div class="titulo_portal_do_paciente">
-  <h1>Portal do paciente</h1>
+  <div class="titulo">
+    <h1>Portal do paciente</h1>
+  </div>
 </div>
 
-<div id="div-data">
-  <time id="data" datetime="{{ data|date:'Y-m-d' }}">{{ data|date:'d/m/Y' }}</time>
-</div>
 
 <!--<time class="hora_data" datetime="{{ data_hora|date:'Y-m-dTH:i:s' }}">{{ data_hora|date:'d/m/Y H:i' }}</time>-->
 
@@ -55,7 +56,6 @@
            <a class="nav-menu-link" href="#lista_de_medicos">Médicos disponíveis</a>
            <a class="nav-menu-link" href="#paciente">Meus dados</a>
           <a class="nav-menu-link" href="{% url 'agendar_consulta' id=paciente.id %}">Agendar nova consulta</a>
-          <a class="nav-menu-link" href="#teste">teste</a>
         </nav>
       </div>
       <div class="container">
@@ -125,6 +125,9 @@
             <a href="#"><button id="suas-consultas-button-close">x</button></a>
           </div>
           <h3>Consultas marcadas</h3>
+            <br>
+            <a href="{% static 'historico/sage.pdf' %}" download="historico">Baixe aqui seu histórico de consultas</a>
+          
           
           <table class="table table-striped">
             <thead>
@@ -152,11 +155,7 @@
           <br>
           <br>
   
-          <div id="historico">
-            <h3>Baixe aqui seu histórico de consultas</h3>
-            <br>
-            <a href="{% static 'historico/sage.pdf' %}" download="historico">Histórico</a>
-          </div>
+         
           
         </div>
         <div id="teste">
@@ -167,6 +166,4 @@
   </div>
   
 </div>
-
-
 {% endblock %}
