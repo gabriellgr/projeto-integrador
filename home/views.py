@@ -4,7 +4,7 @@ from django.contrib import messages
 from pacientes.forms import PacienteForm
 from pacientes.models import Paciente
 
-def remover_formatacao_cpf(cpf):
+def remover_formatacao_cpf(cpf:str = '123.456.789-10'):
   """
   Remove pontos e traços de um CPF formatado.
 
@@ -19,10 +19,11 @@ def remover_formatacao_cpf(cpf):
 
 
 def home(request):
-    context ={
-        #'paciente':paciente,#Chama-se com a chave, não o valor
-    }
+    #paciente = Paciente.objects.get(id=int(id))  # Obtenha o paciente
 
+    context ={
+     #   'paciente':paciente,#Chama-se com a chave, não o valor
+    }
     return render(request, 'home.html')
 
 def _login_(request):

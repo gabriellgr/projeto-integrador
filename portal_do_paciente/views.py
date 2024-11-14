@@ -5,6 +5,9 @@ from datetime import datetime
 from medicos.models import Medico
 from django.contrib import messages
 from agendamentos.models import AgendamentoConsulta
+from django.contrib.auth import logout
+
+
 
 
 @login_required
@@ -14,7 +17,6 @@ def portal_do_paciente(request, id):
     # Verifique se o usuário tem permissão para acessar os dados do paciente
     if request.user.id != int(id):  # Converta o id para inteiro e compare
         return redirect('login')  # Redirecione para a página de login
-
     
     paciente = Paciente.objects.get(id=int(id))  # Obtenha o paciente
     medicos = Medico.objects.all()
@@ -106,3 +108,7 @@ def agendar_consulta(request, id):
     }
 
     return render(request, 'agendamento.html', context)
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')  # Redirecione para a página de login

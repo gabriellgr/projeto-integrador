@@ -33,15 +33,6 @@
     color: white;
   }
   
-  #div-footer{
-    
-      position: fixed; /* Posição fixa na tela */
-      bottom: 0; /* Posiciona na parte inferior da tela */
-      width: 100%; /* Largura total da tela */
-      padding: 20px; /* Espaçamento interno */
-      text-align: center; /* Centraliza o conteúdo */
-    
-  }
   
   /* Responsividade para telas menores (abaixo de 992px) */
   @media (max-width: 992px) {
@@ -53,9 +44,15 @@
       margin-bottom: 10px; /* Adiciona espaço entre os itens do menu */
     }
   }  
+
 /*_______FORM_LOGIN_________________________________________________________________*/
 
 /* Estilos para a div "login" */
+
+.container-login  {
+  display: flex;
+  align-content: center;
+}
 div.login {
     text-align: center;
     font-family: sans-serif;
