@@ -20,3 +20,6 @@ class AgendamentoConsulta(models.Model):
     hora = models.TimeField(
         choices=HORARIOS, default=time(8, 0)
     )
+
+    def __str__(self):
+        return f"Consulta de {self.paciente} com {self.medico} em {self.data} às {self.hora}"

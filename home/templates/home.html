@@ -26,23 +26,29 @@
             <a class="nav-link" href="{% url 'login' %}">Login</a>
           </li>
           {% comment %}
-          {% endcomment %}
-        
-          
+          {% endcomment %} 
         </ul>
-        
       </div>
     </div>
   </nav>
 </header>
+  <div>
+    <div class="container">
+      <h2>Bem-vindo(a) ao sistema de agendamento da [Nome da Clínica]!</h2>
 
-  <div class="container">
-
-    <h1 id="titulo_home">Home</h1>
-
-    <strong><h3 id="titulo_sistema">Sistema de Agendamento e Gerenciamento (SAGe) </h3></strong>
-    <p>Olá, aqui você pode agendar consultas de forma simples e rápida, click em cadastre-se e inicie o agendamento!</p>
-   
+      <p>Com este sistema, você tem a praticidade de agendar suas consultas de forma rápida e fácil, diretamente do seu computador ou dispositivo móvel.</p>
+  
+      <h2>Aproveite os benefícios:</h2>
+  
+      <ul>
+          <li>Agendamento 24 horas por dia, 7 dias por semana: Acesse o sistema a qualquer momento e agende sua consulta no horário que melhor lhe convém.</li>
+          <li>Visualização de horários disponíveis: Encontre a data e hora ideal para você, sem necessidade de telefonemas ou filas.</li>
+          <li>Confirmação rápida e segura: Receba a confirmação do seu agendamento por email, garantindo que sua consulta está agendada.</li>
+          <li>Gerenciamento completo: Acesse seus agendamentos, cancele ou altere suas consultas com total autonomia.</li>
+      </ul>
+  
+      <a class="div-link" href="{% url 'cadastro' %}">Cadastre-se</a>
+    </div>
   </div>
 
   {% endblock %}

@@ -32,4 +32,23 @@ header {
   background-color: rgb(0, 100, 150);
   color: white;
 }
+.container{
+  opacity: 0.8;
+  margin-top: 20px;
+  border-radius: 6px;
+  background-color: aliceblue;
+}
 
+.div-link {
+  color: white;
+  text-decoration: none;
+  background-color: gray;
+  padding: 5px ;
+  border-radius:6px;
+}
+
+.div-link:hover {
+  transition: 1s;
+  background-color: rgb(0, 100, 150); 
+
+}

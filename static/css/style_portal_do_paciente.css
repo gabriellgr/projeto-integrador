@@ -90,18 +90,18 @@ header {
   border: 2px solid ;
 }
 #suas_consultas {
-display: none ; /* Oculta a seção inicialmente */
+  display: none; /* Oculta a seção inicialmente */
+  transition: all 1s ease; /* Adiciona transição com duração de 0.5s */
 }
 
 #suas_consultas:target {
-  background-color: gainsboro ;
-  color: black;
+  background-color: gainsboro;
+  color: red;
   width: 1250px;
   left: 1085px;
   border-radius: 6px;
   display: inline-block; 
   border: 2px solid black;
-  
 }
 #suas_consultas > a{
   text-decoration: none;
