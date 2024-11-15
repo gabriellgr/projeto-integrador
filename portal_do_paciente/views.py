@@ -45,19 +45,6 @@ def portal_do_paciente(request, id):
     return render(request, 'portal_do_paciente.html', context)
 
 @login_required
-def cadastro_de_medicos(request, id):
-    if request.user.id != int(id):  # Converta o id para inteiro e compare
-        return redirect('login')  # Redirecione para a página de login
-    else:
-        paciente = Paciente.objects.get(id=int(id))  # Obtenha o paciente
-        context = {
-            'paciente': paciente,  # Adicione o objeto paciente ao contexto
-        }
-        return render(request, 'cadastrar_medicos.html', context)
-
-
-
-@login_required
 def agendar_consulta(request, id):
     
     if request.user.id != int(id):  
@@ -112,3 +99,29 @@ def agendar_consulta(request, id):
 def logout_view(request):
     logout(request)
     return redirect('login')  # Redirecione para a página de login
+
+@login_required
+def cadastro_de_medicos(request, id):
+    if request.user.id != int(id):  # Converta o id para inteiro e compare
+        return redirect('login')  # Redirecione para a página de login
+    else:
+        paciente = Paciente.objects.get(id=int(id))  # Obtenha o paciente
+        context = {
+            'paciente': paciente,  # Adicione o objeto paciente ao contexto
+        }
+        return render(request, 'cadastrar_medicos.html', context)
+
+
+@login_required
+def gestao_de_pacientes(request, id):
+    if request.user.id != int(id):  # Converta o id para inteiro e compare
+        return redirect('login')  # Redirecione para a página de login
+    else:
+        paciente_all = Paciente.objects.all()
+        paciente = Paciente.objects.get(id=int(id))  # Obtenha o paciente
+        context = {
+            'paciente': paciente,  # Adicione o objeto paciente ao contexto
+            'pacientes':paciente_all,
+        }
+        return render(request, 'gerenciar_pacientes.html', context)
+

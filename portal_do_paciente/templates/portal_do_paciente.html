@@ -55,6 +55,10 @@
            <a class="nav-menu-link" href="#lista_de_medicos">Médicos disponíveis</a>
            <a class="nav-menu-link" href="#paciente">Meus dados</a>
           <a class="nav-menu-link" href="{% url 'agendar_consulta' id=paciente.id %}">Agendar nova consulta</a>
+          {% if paciente.is_staff %}
+          <a class="nav-menu-link" href="{% url 'cadastro_de_medicos' id=paciente.id %}">Adicionar médico(a)</a>
+          <a class="nav-menu-link" href="{% url 'gestao_de_pacientes' id=paciente.id %}">Gerenciar pacientes</a>
+          {% endif %}
         </nav>
       </div>
       <div class="container">

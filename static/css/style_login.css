@@ -67,7 +67,7 @@ flex-direction: column; /* Se precisar organizar os elementos em coluna */
 width: 500px;/*tamanho*/
 height: 500px;
 margin: auto; /* centraliza o elemento */
-background-color: rgb(43, 57, 71);
+background-color: rgb(54, 63, 71);
 border-radius: 6px;
 opacity: 0.8;
 }
