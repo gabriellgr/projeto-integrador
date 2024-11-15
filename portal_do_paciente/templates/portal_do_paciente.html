@@ -1,13 +1,10 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
 {% block title %}Portal do paciente{% endblock %}
-
 {% block content %}
 
 <link rel="stylesheet" href="{% static 'css/style_portal_do_paciente.css' %}">
-
 
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -27,7 +24,6 @@
             <a class="nav-link" href="{% url 'logout' %}">Sair</a>
           </li>
         </ul>
-        
       </div>
     </div>
   </nav>

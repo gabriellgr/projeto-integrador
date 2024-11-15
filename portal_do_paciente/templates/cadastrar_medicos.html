@@ -7,10 +7,6 @@
   {% block content %}
   <link rel="stylesheet" href="{% static 'css/style_cadastrar_medicos.css' %}">
 
-<body>
-  
-<h1>cadastrar médicos</h1>
-
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -34,31 +30,41 @@
 
 
     <div class="form-container">
-      <h2>Cadastro de Médico</h2>
+      
+      <br>
+      <br>
       <form method="post" >
         {% csrf_token %}
         <div>
-          <label for="nome">Nome:</label>
+          <h2>Cadastre</h2>
+          <p>Nome</p>
           <input type="text" id="nome" name="nome_medico" required>
-
-          <label for="email">Email:</label>
+          <br>
+          <br>
+          <p>Email</p>
           <input type="text" id="emal" name="email" required>
-
-          <label for="data_de_nascimento">Data de nascimento</label>
+          <br>
+          <br>
+          <p>Data de nascimento</p>
           <input type="date" id="data_de_nascimento" name="data_de_nascimento" required>
-
-          <label for="cpf">CPF</label>
+          <br>
+          <br>
+          <p>CPF</p>
           <input type="text" id="cpf" name="cpf" required>
-
-          <label for="crm">CRM</label>
+          <br>
+          <br>
+          <p>CRM</p>
           <input type="number" id="crm" name="crm" required>
-
-          <label for="especialidade">Especialidade:</label>
+          <br>
+          <br>
+          <p>Especialidade</p>
           <input type="text" id="especialidade" name="especialidade" required>
-
-          <label for="password">Senha</label>
+          <br>
+          <br>
+          <p>Senha</p>
           <input type="password" id="password" name="password" required>
-      
+            <br>
+            <br>
         <button type="submit">Cadastrar</button>
       </form>
     
