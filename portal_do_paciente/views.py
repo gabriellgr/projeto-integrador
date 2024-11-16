@@ -138,7 +138,6 @@ def cadastro_de_medicos(request, id):
             return redirect('agendar_consulta', id=id)
         
         else:
-
             Medico.objects.create(
                 nome=nome,
                 email=email,
@@ -155,8 +154,7 @@ def cadastro_de_medicos(request, id):
             
             messages.success(request,"Medico cadastrado")
             return redirect('portal_do_paciente', id=id)
-    
-    
+
     context = {
         'paciente':paciente,
             }

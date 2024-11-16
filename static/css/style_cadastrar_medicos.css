@@ -17,13 +17,3 @@ header{
   background-color: rgb(0, 100, 150);
   color: white;
 }
-
-/* Estilos para a página */
-body {  
-  font-size: 1rem;
-  padding: 10px;
-  background-color: azure;
-  font-family: sans-serif;
-  text-align: center;
-}
-
