@@ -89,6 +89,7 @@ header {
   display: none;
   border: 2px solid ;
 }
+
 #suas_consultas {
   display: none; /* Oculta a seção inicialmente */
   transition: all 1s ease; /* Adiciona transição com duração de 0.5s */
