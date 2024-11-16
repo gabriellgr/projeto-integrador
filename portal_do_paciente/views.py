@@ -1,10 +1,11 @@
 from pacientes.models import Paciente
+from pacientes.forms import PacienteForm
 from medicos.models import Medico
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from datetime import datetime,time
 from django.contrib import messages
-from django.contrib.auth import logout
+from django.contrib.auth import logout,login
 from agendamentos.models import AgendamentoConsulta
 
 @login_required
@@ -162,13 +163,41 @@ def cadastro_de_medicos(request, id):
 
 @login_required
 def gestao_de_pacientes(request, id):
-    if request.user.id != int(id):  # Converta o id para inteiro e compare
-        return redirect('login')  # Redirecione para a página de login
+    pacientes = Paciente.objects.all()
+    try:
+        paciente = Paciente.objects.get(id=id)
+    except Paciente.DoesNotExist:
+        return redirect('cadastro')
+    
+    if request.user.id != int(id):
+        return redirect('login')
     else:
-        paciente_all = Paciente.objects.all()
-        paciente = Paciente.objects.get(id=int(id))  # Obtenha o paciente
+        if request.method == 'POST':
+            form = PacienteForm(request.POST, instance=paciente)
+            if form.is_valid():
+                paciente = form.save(commit=False)  # Cria o objeto Paciente, mas não salva ainda
+            
+                # Define a senha usando set_password
+                paciente.set_password(form.cleaned_data['password'])
+
+                # Define a data de nascimento corretamente
+                paciente.data_de_nascimento = form.cleaned_data['data_de_nascimento']
+                
+                # Salva o paciente no banco de dados
+                paciente.is_staff = False
+                paciente.is_superuser = False
+                paciente.is_active = True
+        
+                paciente.save()
+                messages.success(request, 'Paciente cadastrado com sucesso!')
+            else:
+                messages.error(request, 'ocorreu um erro no formulário!')
+        else:
+            form = PacienteForm(instance=paciente)
+
         context = {
-            'paciente': paciente,  # Adicione o objeto paciente ao contexto
-            'pacientes':paciente_all,
+            'form': form,  # Certifique-se que 'form' está sempre no contexto
+            'paciente': paciente,
+            'pacientes': pacientes,
         }
-        return render(request, 'gerenciar_pacientes.html', context)
+        return render(request, 'gerenciar_pacientes.html', context) # Use SEMPRE o mesmo template

@@ -87,38 +87,8 @@ def cadastro(request):
     else:
         form = PacienteForm()
     return render(request, 'cadastro.html', {'form': form})
-
-def _cadastrar_medicos(request):
-    return render(request, 'cadastrar_medicos.html')
     
     
-'''def login(request):
-    """
-    View para efetuar o login de um paciente.
-    """
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        cpf = request.POST.get('cpf')
-        password = request.POST.get('password')
-        # Autentica o usuário
-        user = authenticate(email=email, password=password, cpf=cpf)
-        if user is not None:
-            login(request, user)
-            messages.success(request, 'Login realizado com sucesso!')
-            return redirect('home')  # Redireciona para a página inicial após o login
-        else:
-            messages.error(request, 'Email, CPF ou senha inválidos!')
-    return render(request, 'cadastro/login_paciente.html')
-
-def home(request):
-    """
-    View para a página inicial, acessível somente para usuários autenticados.
-    """
-    if request.user.is_authenticated:
-        return render(request, 'cadastro/home.html')
-    else:
-        return redirect('login')  # Redireciona para a tela de login se o usuário não estiver autenticado'''
-
 def teste(request):
     return render(request, 'teste.html')
 
