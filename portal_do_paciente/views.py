@@ -43,13 +43,14 @@ from datetime import datetime
 
 @login_required
 def agendar_consulta(request, id):
-    if request.user.id != int(id):
-        return redirect('login')  
     try:
         paciente = Paciente.objects.get(id=id)
     except Paciente.DoesNotExist:
         return redirect('cadastro')
 
+    if request.user.id != int(id):
+        return redirect('login')  
+    
     if request.method == 'POST':
         data_consulta = request.POST.get('data_consulta')  
         hora_consulta = request.POST.get('hora_consulta')
@@ -108,14 +109,58 @@ def logout_view(request):
 
 @login_required
 def cadastro_de_medicos(request, id):
-    if request.user.id != int(id):  # Converta o id para inteiro e compare
-        return redirect('login')  # Redirecione para a página de login
-    else:
-        paciente = Paciente.objects.get(id=int(id))  # Obtenha o paciente
-        context = {
-            'paciente': paciente,  # Adicione o objeto paciente ao contexto
-        }
-        return render(request, 'cadastrar_medicos.html', context)
+    try:
+        paciente = Paciente.objects.get(id=id)
+    except Paciente.DoesNotExist:
+        return redirect('cadastro')
+
+    if request.user.id != int(id):
+        return redirect('login')  
+    
+    if request.method == 'POST':
+        nome = request.POST.get('nome')  
+        email = request.POST.get('email')  
+        data_de_nascimento = request.POST.get('data_de_nascimento')  
+        cpf = request.POST.get('cpf')  
+        crm = request.POST.get('crm')  
+        especialidade = request.POST.get('especialidade')  
+        password = request.POST.get('password')  
+
+        print(f'Nome: {nome}')
+        print(f'data: {email}')
+        print(f'CPF: {cpf}')
+        print(f'CRM: {crm}')
+        print(f'Especialidade: {especialidade}')
+        print(f'Password: {password}')
+
+        if not nome or not email or not data_de_nascimento or not cpf or not crm or not especialidade or not password :
+            messages.error(request, "Todos os campos são obrigatórios.")
+            return redirect('agendar_consulta', id=id)
+        
+        else:
+
+            Medico.objects.create(
+                nome=nome,
+                email=email,
+                data_de_nascimento=data_de_nascimento,
+                cpf=cpf,
+                crm=crm,
+                especialidade=especialidade,
+                password=password,
+                is_staff=False,
+                is_superuser=False,
+                is_active=True
+
+            )
+            
+            messages.success(request,"Medico cadastrado")
+            return redirect('portal_do_paciente', id=id)
+    
+    
+    context = {
+        'paciente':paciente,
+            }
+    return render(request, 'cadastrar_medicos.html', context=context)
 
 @login_required
 def gestao_de_pacientes(request, id):

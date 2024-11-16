@@ -1,4 +1,6 @@
-
+*{
+  font-size: 1.2rem;
+}
 header{
   opacity: 0.8;
 }
@@ -17,26 +19,11 @@ header{
 }
 
 /* Estilos para a página */
-body {
-  
+body {  
+  font-size: 1rem;
+  padding: 10px;
   background-color: azure;
   font-family: sans-serif;
-}
-
-.form-container{
   text-align: center;
 }
 
-input{
-  border-radius: 6px;
-}
-
-button{
-  background-color: blanchedalmond;
-  border-radius: 6px;
-}
-button:hover{
-  transition: 1s;
-  background-color: gray;
-  border-radius: 6px;
-}

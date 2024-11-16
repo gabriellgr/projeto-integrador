@@ -47,7 +47,7 @@ header {
   display: flex;
   align-content: space-around;
   align-items: center;
-  color: red;
+  color: black;
   margin-top: 100px;
   /*border: 2px solid red;*/
 }
@@ -82,7 +82,7 @@ header {
 }
 #teste{
   background-color: gainsboro ;
-  color: red;
+  color: black;
   width: 1250px;
   left: 1085px;
   border-radius: 6px;
@@ -96,7 +96,7 @@ header {
 
 #suas_consultas:target {
   background-color: gainsboro;
-  color: red;
+  color: black;
   width: 1250px;
   left: 1085px;
   border-radius: 6px;
