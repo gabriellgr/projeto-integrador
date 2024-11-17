@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from pacientes.forms import PacienteForm
@@ -88,7 +88,7 @@ def cadastro(request):
         form = PacienteForm()
     return render(request, 'cadastro.html', {'form': form})
     
-    
+
 def teste(request):
     return render(request, 'teste.html')
 

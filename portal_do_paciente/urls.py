@@ -13,6 +13,7 @@ urlpatterns = [
     path('<int:id>/gestao_de_pacientes/', views.gestao_de_pacientes, name='gestao_de_pacientes'),
     path('<int:id>', views.agendar_consulta, name='agendar_consulta'),
     path('logout/', views.logout_view, name='logout'),
+    path('paciente/<int:id>/editar/', views.editar_paciente, name='editar_paciente'),
     #path('api/consultas/', PacienteSerializer.as_view(), name='consulta-list'),
     #path('api/consultas/<int:pk>/', PacienteDetailView.as_view(), name='consulta-detail'),
     #path('api/consultas/', PacienteCreateView.as_view(), name='consulta-create'), 

@@ -1,0 +1,38 @@
+{% load static %}
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="{% static 'images/portal_do_paciente_icon.png' %}" alt="home" width="30" height="30">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">  
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'portal_do_paciente' id=paciente.id%}">Voltar </a>
+              <a class="nav-link" href="{% url 'cadastro_de_medicos' id=paciente.id%}">Cadastre um novo medico </a>
+            </li>
+          </ul>
+          
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+
+<h1>Edição de Paciente</h1>
+
+{% if erro %}
+    <div class="alert alert-danger">{{ erro }}</div>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Renderiza o formulário como parágrafos -->
+    <button type="submit">Salvar Alterações</button>
+</form>
+
+<p>ID do Paciente: {{ paciente.id }}</p>  <!-- Exibe o ID do paciente -->
+<!-- Adicione aqui outros campos que desejar exibir do paciente -->

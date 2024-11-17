@@ -2,11 +2,12 @@ from pacientes.models import Paciente
 from pacientes.forms import PacienteForm
 from medicos.models import Medico
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from datetime import datetime,time
 from django.contrib import messages
 from django.contrib.auth import logout,login
 from agendamentos.models import AgendamentoConsulta
+
 
 @login_required
 def portal_do_paciente(request, id):
@@ -152,7 +153,6 @@ def cadastro_de_medicos(request, id):
                 is_active=True
 
             )
-            
             messages.success(request,"Medico cadastrado")
             return redirect('portal_do_paciente', id=id)
 
@@ -164,6 +164,8 @@ def cadastro_de_medicos(request, id):
 @login_required
 def gestao_de_pacientes(request, id):
     pacientes = Paciente.objects.all()
+    medicos = Medico.objects.all()
+    agendamentos = AgendamentoConsulta.objects.all()
     try:
         paciente = Paciente.objects.get(id=id)
     except Paciente.DoesNotExist:
@@ -193,11 +195,33 @@ def gestao_de_pacientes(request, id):
             else:
                 messages.error(request, 'ocorreu um erro no formulário!')
         else:
-            form = PacienteForm(instance=paciente)
+            form = PacienteForm()
 
         context = {
             'form': form,  # Certifique-se que 'form' está sempre no contexto
-            'paciente': paciente,
             'pacientes': pacientes,
+            'paciente': paciente,
+            'medicos':medicos,
+            'agendamentos':agendamentos,
         }
-        return render(request, 'gerenciar_pacientes.html', context) # Use SEMPRE o mesmo template
+        return render(request, 'gerenciar_pacientes.html', context)
+
+def editar_paciente(request, id):
+    paciente = get_object_or_404(Paciente, id=id) # Usa get_object_or_404 para lidar com Paciente inexistente
+
+    if request.method == 'POST':
+        form = PacienteForm(request.POST, instance=paciente)
+        if form.is_valid():
+            form.save()
+            return redirect('portal_do_paciente',id=id) # Redireciona para o portal do paciente
+        else:
+            # Mensagem de erro para formulário inválido
+            contexto = {'form': form, 'paciente': paciente, 'erro': 'Formulário inválido. Verifique os campos.'}
+            return render(request, 'editar_paciente.html', contexto) # Renderiza a mesma página com os erros
+    else:
+        form = PacienteForm(instance=paciente)
+
+    context = {'form': form, 'paciente': paciente}
+    return render(request, 'editar_paciente.html', context)
+
+        
