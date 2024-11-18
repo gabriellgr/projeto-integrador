@@ -224,4 +224,15 @@ def editar_paciente(request, id):
     context = {'form': form, 'paciente': paciente}
     return render(request, 'editar_paciente.html', context)
 
-        
+from django.shortcuts import get_object_or_404
+
+def remover_paciente(request, id):
+    paciente = get_object_or_404(Paciente, id=id) 
+    if request.method=="POST":
+        paciente.delete() 
+        return redirect('portal_do_paciente', id=id)
+    else:
+            # Mensagem de erro para formulário inválido
+        contexto = {'paciente': paciente, 'erro': 'Formulário inválido. Verifique os campos.'}
+        return render(request, 'remover_paciente.html', contexto) # Renderiza a mesma página com os erros
+    return render(request, 'remover_paciente.html')

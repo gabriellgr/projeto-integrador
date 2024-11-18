@@ -58,6 +58,7 @@
         <p>CPF: {{ paciente.cpf }}</p>
         <p>Email: {{ paciente.email }}</p>
         <a class="editar" href="{% url 'editar_paciente' paciente.id %}">Editar dados</a>
+        <a class="editar" href="{% url 'remover_paciente' paciente.id %}">Remover</a>
       </div>
     {% endfor %}
   </div>
@@ -67,6 +68,7 @@
   <br>
   <br>
   <div class="flex-container">
+    {% if agendamentos %}
     {% for agendamento in agendamentos %}
       <div class="flex-item">
         <p>Médico(a): {{ agendamento.medico.nome }}</p>
@@ -79,6 +81,9 @@
         <p>Hora: {{ agendamento.hora|date:"H:i" }}</p>
       </div>
     {% endfor %}
+    {% else %}
+    <h3 style="text-align: center;color:red;">Sem consultas</h3>
+    {% endif %}
   </div>
 </div>
 
