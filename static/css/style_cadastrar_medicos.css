@@ -17,3 +17,6 @@ header{
   background-color: rgb(0, 100, 150);
   color: white;
 }
+.form-container{
+  margin: 20px;
+}

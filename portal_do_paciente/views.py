@@ -8,7 +8,6 @@ from django.contrib import messages
 from django.contrib.auth import logout,login
 from agendamentos.models import AgendamentoConsulta
 
-
 @login_required
 def portal_do_paciente(request, id):
     DATA = datetime.now()
@@ -175,7 +174,7 @@ def gestao_de_pacientes(request, id):
         return redirect('login')
     else:
         if request.method == 'POST':
-            form = PacienteForm(request.POST, instance=paciente)
+            form = PacienteForm(request.POST)
             if form.is_valid():
                 paciente = form.save(commit=False)  # Cria o objeto Paciente, mas não salva ainda
             
@@ -204,11 +203,12 @@ def gestao_de_pacientes(request, id):
             'medicos':medicos,
             'agendamentos':agendamentos,
         }
+
         return render(request, 'gerenciar_pacientes.html', context)
 
+@login_required
 def editar_paciente(request, id):
     paciente = get_object_or_404(Paciente, id=id) # Usa get_object_or_404 para lidar com Paciente inexistente
-
     if request.method == 'POST':
         form = PacienteForm(request.POST, instance=paciente)
         if form.is_valid():
@@ -224,7 +224,7 @@ def editar_paciente(request, id):
     context = {'form': form, 'paciente': paciente}
     return render(request, 'editar_paciente.html', context)
 
-from django.shortcuts import get_object_or_404
+
 
 def remover_paciente(request, id):
     paciente = get_object_or_404(Paciente, id=id) 
@@ -235,4 +235,5 @@ def remover_paciente(request, id):
             # Mensagem de erro para formulário inválido
         contexto = {'paciente': paciente, 'erro': 'Formulário inválido. Verifique os campos.'}
         return render(request, 'remover_paciente.html', contexto) # Renderiza a mesma página com os erros
-    return render(request, 'remover_paciente.html')
+
+

@@ -16,7 +16,7 @@ class PacienteForm(forms.ModelForm):
         widgets = {
             'password': forms.PasswordInput(),
             'data_de_nascimento': forms.DateInput(
-                format="%Y-%m-%d",  # Use o formato padrão do Django
+                format="%Y-%m-%d",  
                 attrs={'type': 'date'}
             ),
             'nome': forms.TextInput(attrs={'class': 'form-control'}),
@@ -26,9 +26,9 @@ class PacienteForm(forms.ModelForm):
 
         data_de_nascimento = forms.DateField(
         widget=forms.DateInput(
-            format="%Y-%m-%d",  # Use o formato padrão do Django
+            format="%Y-%m-%d",  
             attrs={'type': 'date'}
         ),
-        input_formats=["%Y-%m-%d"],  # Formato de entrada da data
+        input_formats=["%Y-%m-%d"],  
         validators=[validate_future_date],
     )
