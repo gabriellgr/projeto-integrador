@@ -165,6 +165,7 @@ def gestao_de_pacientes(request, id):
     pacientes = Paciente.objects.all()
     medicos = Medico.objects.all()
     agendamentos = AgendamentoConsulta.objects.all()
+
     try:
         paciente = Paciente.objects.get(id=id)
     except Paciente.DoesNotExist:
@@ -172,29 +173,29 @@ def gestao_de_pacientes(request, id):
     
     if request.user.id != int(id):
         return redirect('login')
-    else:
-        if request.method == 'POST':
-            form = PacienteForm(request.POST)
-            if form.is_valid():
-                paciente = form.save(commit=False)  # Cria o objeto Paciente, mas não salva ainda
+    
+    
+    if request.method == 'POST':
+        form = PacienteForm(request.POST)
+        if form.is_valid():
+            paciente = form.save(commit=False)  # Cria o objeto Paciente, mas não salva ainda
             
-                # Define a senha usando set_password
-                paciente.set_password(form.cleaned_data['password'])
+            # Define a senha usando set_password
+            paciente.set_password(form.cleaned_data['password'])
 
-                # Define a data de nascimento corretamente
-                paciente.data_de_nascimento = form.cleaned_data['data_de_nascimento']
+            # Define a data de nascimento corretamente
+            paciente.data_de_nascimento = form.cleaned_data['data_de_nascimento']
                 
                 # Salva o paciente no banco de dados
-                paciente.is_staff = False
-                paciente.is_superuser = False
-                paciente.is_active = True
+            paciente.is_staff = False
+            paciente.is_superuser = False
+            paciente.is_active = True
         
-                paciente.save()
-                messages.success(request, 'Paciente cadastrado com sucesso!')
-            else:
-                messages.error(request, 'ocorreu um erro no formulário!')
+            paciente.save()
+            messages.success(request, 'Paciente cadastrado com sucesso!')
+
         else:
-            form = PacienteForm()
+            messages.error(request, 'ocorreu um erro no formulário!')
 
         context = {
             'form': form,  # Certifique-se que 'form' está sempre no contexto
@@ -204,7 +205,18 @@ def gestao_de_pacientes(request, id):
             'agendamentos':agendamentos,
         }
 
-        return render(request, 'gerenciar_pacientes.html', context)
+        return redirect('portal_do_paciente', id=id)
+    
+    elif request.method == 'GET':
+        form = PacienteForm(request.POST)
+        context = {
+            'form': form,  # Certifique-se que 'form' está sempre no contexto
+            'pacientes': pacientes,
+            'paciente': paciente,
+            'medicos':medicos,
+            'agendamentos':agendamentos,
+        }
+        return render(request, 'gerenciar_pacientes.html',context)
 
 @login_required
 def editar_paciente(request, id):
