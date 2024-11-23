@@ -39,7 +39,6 @@ def portal_do_paciente(request, id):
     }
     return render(request, 'portal_do_paciente.html', context)
 
-
 from datetime import datetime
 
 @login_required
@@ -224,7 +223,21 @@ def editar_paciente(request, id):
     if request.method == 'POST':
         form = PacienteForm(request.POST, instance=paciente)
         if form.is_valid():
-            form.save()
+
+            paciente = form.save(commit=False)  # Cria o objeto Paciente, mas não salva ainda
+            
+            # Define a senha usando set_password
+            paciente.set_password(form.cleaned_data['password'])
+
+            # Define a data de nascimento corretamente
+            paciente.data_de_nascimento = form.cleaned_data['data_de_nascimento']
+                
+                # Salva o paciente no banco de dados
+            paciente.is_staff = False
+            paciente.is_superuser = False
+            paciente.is_active = True
+        
+            paciente.save()
             return redirect('portal_do_paciente',id=id) # Redireciona para o portal do paciente
         else:
             # Mensagem de erro para formulário inválido
@@ -235,8 +248,6 @@ def editar_paciente(request, id):
 
     context = {'form': form, 'paciente': paciente}
     return render(request, 'editar_paciente.html', context)
-
-
 
 def remover_paciente(request, id):
     paciente = get_object_or_404(Paciente, id=id) 

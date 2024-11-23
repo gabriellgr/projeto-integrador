@@ -1,40 +1,19 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Captura todos os links do sumário
-  const links = document.querySelectorAll(".nav-menu-link");
+function formatarCPF(cpf) {
+  // Remove caracteres não numéricos
+  cpf = cpf.replace(/[^0-9]/g, '');
   
-  // Captura todos os botões de fechar
-  const closeButtons = document.querySelectorAll("[id$='button-close']");
+  // Verifica se o CPF tem 11 dígitos
+  if (cpf.length !== 11) {
+  return cpf; // Retorna o CPF sem formatação se não tiver 11 dígitos
+  }
   
-  // Função para ocultar todas as divs
-  function hideAllDivs() {
-    const divs = document.querySelectorAll("#consultas, #atendimento, #lista_de_medicos, #paciente, #historico");
-    divs.forEach(function (div) {
-      div.style.display = "none";
-    });
+  // Formata o CPF: xxx.xxx.xxx-xx
+  return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
   }
-
-  // Função para exibir a div correspondente ao link clicado
-  function showDiv(targetId) {
-    hideAllDivs();
-    const targetDiv = document.querySelector(targetId);
-    if (targetDiv) {
-      targetDiv.style.display = "block";
-    }
-  }
-
-  // Adiciona o evento de clique aos links do sumário
-  links.forEach(function (link) {
-    link.addEventListener("click", function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute("href");
-      showDiv(targetId);
-    });
+  
+  // Exemplo de uso:
+  const inputCPF =document.querySelector("#id_cpf");
+  
+  inputCPF.addEventListener('input', function() {
+  this.value = formatarCPF(this.value);
   });
-
-  // Adiciona o evento de clique para os botões de fechar
-  closeButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-      hideAllDivs();
-    });
-  });
-});
