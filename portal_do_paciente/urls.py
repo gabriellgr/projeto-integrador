@@ -1,11 +1,6 @@
 from . import views
 from django.urls import path
-from . views_set import (
-    PacienteCreateView,
-    PacienteDetailView,
-    PacienteListView,
-    PacienteSerializer
-)
+
 
 urlpatterns = [
     path('<int:id>/', views.portal_do_paciente, name='portal_do_paciente'), 
@@ -15,8 +10,4 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('paciente/<int:id>/editar/', views.editar_paciente, name='editar_paciente'),
     path('paciente/<int:id>/remover/', views.remover_paciente, name='remover_paciente'),
-    #path('api/consultas/', PacienteSerializer.as_view(), name='consulta-list'),
-    #path('api/consultas/<int:pk>/', PacienteDetailView.as_view(), name='consulta-detail'),
-    #path('api/consultas/', PacienteCreateView.as_view(), name='consulta-create'), 
-    path('api/consultas/', PacienteListView.as_view(), name='consulta-create'), 
 ]
