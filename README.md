@@ -328,18 +328,72 @@ que mistura python ao arquivo html. Exemplo em portal_do_paciente/templates/port
 ## As páginas web (arquivos .html)
 - ` Divididas nas pastas home/templates e portal_do_paciente/templates `            :
 
-- Home/templates:
-    - base.html
-    - cadastro.html
-    - home.html
-    - login.html
+### Home/templates:
+- base.html
+    - Base dos templates html
 
-- portal_do_paciente/templates
-    - agendamentos.html
-    - cadastrar_medicos.html
-    - gerenciar_pacientes.html
-    - portal_do_paciente.html
-    - remover_paciente.html
+```html
+{% load static %}
+
+<!DOCTYPE html>
+<!--BASE DE TODOS OS TEMPLATES 18/10/2024-->
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style_base.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <body>
+    {% block content %}
+    {% endblock %}
+
+    
+      <div class="div-footer">
+        <footer id="footer">
+          <!--
+          <p>© 2024 Direitos Reservados Softex</p>
+          -->
+          
+        </footer>
+      </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
+```
+- cadastro.html
+    - Responsável pelo cadastro
+- home.html
+    - página inicial
+- login.html
+    - Responsável pelo login
+
+### portal_do_paciente/templates
+- agendamentos.html
+    - Responsável pelo agendamento da consulta
+- cadastrar_medicos.html
+    - Apenas funcionários têm esta opção, adicinar médicos ao banco de dados
+- gerenciar_pacientes.html
+    - Apenas funcionários têm esta opção, cadastrar, alterar ou deletar um paciente
+- portal_do_paciente.html
+    - Menu contendo a vizualização de consultas, medicos, disponíveis e consultas marcadas
+- remover_paciente.html
+    - Responsável pela remoção do paciente
+- editar_paciente
+    - Responsável pela edição do paciente
 
 
+### Arquivos estáticos
 
+- Na pasta static estão contidos todos os materias usado bem como os códigos css aplicados aos templates, 
+para carregar arquivos estáticos é necessário utilizar está tag:
+
+- carregar arquivos estáticos
+```html
+{% load static %}
+```
+- Adicionar ao html, exemplo em portal_do_paciente/templates/portal_do_paciente.html
+```html
+<link rel="stylesheet" href="{% static 'css/style_portal_do_paciente.css' %}">
+```
