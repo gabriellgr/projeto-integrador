@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" href="{% static 'css/style_remover.css' %}">
 <h1>Remover Paciente</h1>
-<p>Você tem certeza que deseja remover o paciente {{ paciente.nome_completo }}?</p>
+<p>Você tem certeza que deseja remover o paciente {{ paciente.nome }}?</p>
 <form method="post">
     {% csrf_token %}
     <button type="submit">Remover</button>

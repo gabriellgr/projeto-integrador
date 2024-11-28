@@ -22,7 +22,10 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'portal_do_paciente' id=paciente.id%}">Voltar </a>
             <a class="nav-link" href="{% url 'cadastro_de_medicos' id=paciente.id%}">Cadastre um novo medico </a>
+            {% comment %}
             <a class="nav-link" href=#>Guia rápido</a>
+            {% endcomment %}
+            
           </li>
         </ul>
         
