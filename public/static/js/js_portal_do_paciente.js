@@ -1,3 +1,5 @@
+
+console.log('Oi')
 function formatarCPF(cpf) {
   // Remove caracteres não numéricos
   cpf = cpf.replace(/[^0-9]/g, '');

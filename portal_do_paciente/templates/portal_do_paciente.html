@@ -5,6 +5,7 @@
 {% block content %}
 
 <link rel="stylesheet" href="{% static 'css/style_portal_do_paciente.css' %}">
+<script src="{% static 'js/js_portal_do_paciente.js' %}" defer></script>
 
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -36,6 +37,7 @@
 <div class="titulo_portal_do_paciente">
   <div class="titulo">
     <h1>Portal do paciente</h1>
+    
   </div>
 </div>
 
@@ -50,7 +52,9 @@
            <a class="nav-menu-link" href="#suas_consultas">Suas consultas</a>
            <a class="nav-menu-link" href="#lista_de_medicos">Médicos disponíveis</a>
            <a class="nav-menu-link" href="#paciente">Meus dados</a>
+           <a class="nav-menu-link" href="#imc">Calcular IMC</a>
           <a class="nav-menu-link" href="{% url 'agendar_consulta' id=paciente.id %}">Agendar nova consulta</a>
+          
           {% if paciente.is_staff %}
           <a class="nav-menu-link" href="{% url 'cadastro_de_medicos' id=paciente.id %}">Adicionar médico(a)</a>
           <a class="nav-menu-link" href="{% url 'gestao_de_pacientes' id=paciente.id %}">Gerenciar pacientes</a>
@@ -164,12 +168,25 @@
          
           
         </div>
-        <div id="teste">
-          <h1>teste</h1>
+        <div id="imc">
+
+          <div id="z">
+            <div>
+                <label for="number">Peso</label>
+                <input id="peso" type="number">
+                    <br>
+                <label for="number">Altura</label>
+                <input id="altura" type="number">
+                <br>
+                <button onclick="calcularIMC()">Calcular</button>
+                <br>
+                <span id="resultado"></span>
+            </div>    
         </div>
         
     </div>
   </div>
   
 </div>
+
 {% endblock %}

@@ -3,11 +3,23 @@
     font-size: 1.2rem;
     font-family: sans-serif;
   }
-  body{
-    background-color: azure;
-    /*background:url('https://plus.unsplash.com/premium_photo-1682141162813-16fc10b5ba2f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') ;*/
-    background-size:cover ;
+  @media (min-width: 768px) { /* Para telas médias */
+    body {
+      background-color: azure;
+      background-size: cover;
+      background-position: center;
+    }
   }
+  
+  @media (min-width: 1200px) { /* Para telas grandes */
+    body {
+      background-color: #b2c4d9;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+  
+  
   /*__________________header*/
   header {
     align-items: end !important;
@@ -88,6 +100,6 @@
 .menu > a:hover{
   background-color: yellow;
   font-size: 1.3rem;
-  color: green;
+  color: red;
   text-decoration: none;
 }

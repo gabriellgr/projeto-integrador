@@ -87,7 +87,8 @@ header {
   justify-content: center;
   /* Centraliza os itens verticalmente */
   align-items: center; 
-  background-color: #fff;
+  background-color: #333;
+  opacity: 0.8;
   margin-right: 130px;
 }
 /*Para telas menores, o link é centralizado*/

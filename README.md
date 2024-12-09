@@ -397,3 +397,6 @@ para carregar arquivos estáticos é necessário utilizar está tag:
 ```html
 <link rel="stylesheet" href="{% static 'css/style_portal_do_paciente.css' %}">
 ```
+```
+python manage.py collectstatic
+```
