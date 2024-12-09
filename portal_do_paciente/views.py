@@ -110,55 +110,29 @@ def logout_view(request):
 
 @login_required
 def cadastro_de_medicos(request, id):
-    try:
-        paciente = Paciente.objects.get(id=id)
-    except Paciente.DoesNotExist:
-        return redirect('cadastro')
+    paciente = get_object_or_404(Paciente, id=id)  # Use get_object_or_404 para lidar com 404
 
-    if request.user.id != int(id):
-        return redirect('login')  
-    
+    if request.user.id != int(id):  # Verifica se o usuário logado é o paciente correto
+        return redirect('login')
+
     if request.method == 'POST':
-        nome = request.POST.get('nome')  
-        email = request.POST.get('email')  
-        data_de_nascimento = request.POST.get('data_de_nascimento')  
-        cpf = request.POST.get('cpf')  
-        crm = request.POST.get('crm')  
-        especialidade = request.POST.get('especialidade')  
-        password = request.POST.get('password')  
-
-        print(f'Nome: {nome}')
-        print(f'data: {email}')
-        print(f'CPF: {cpf}')
-        print(f'CRM: {crm}')
-        print(f'Especialidade: {especialidade}')
-        print(f'Password: {password}')
-
-        if not nome or not email or not data_de_nascimento or not cpf or not crm or not especialidade or not password :
-            messages.error(request, "Todos os campos são obrigatórios.")
-            return redirect('agendar_consulta', id=id)
-        
-        else:
-            Medico.objects.create(
-                nome=nome,
-                email=email,
-                data_de_nascimento=data_de_nascimento,
-                cpf=cpf,
-                crm=crm,
-                especialidade=especialidade,
-                password=password,
-                is_staff=False,
-                is_superuser=False,
-                is_active=True
-
-            )
-            messages.success(request,"Medico cadastrado")
+        form = MedicoForm(request.POST)
+        if form.is_valid():
+            medico = form.save(commit=False)  # Salva o medico mas não salva ainda no banco de dados
+            medico.password = form.cleaned_data['password'] #Seta a senha
+            medico.save()  # Salva o medico no banco de dados
+            messages.success(request, "Médico cadastrado com sucesso!")
             return redirect('portal_do_paciente', id=id)
+        else:
+            messages.error(request, "Por favor, corrija os erros no formulário.")
+    else:
+        form = MedicoForm()
 
-    context = {
-        'paciente':paciente,
-            }
-    return render(request, 'cadastrar_medicos.html', context=context)
+    context = {'paciente': paciente, 'form': form}
+    return render(request, 'cadastrar_medicos.html', context)
+
+
+
 
 @login_required
 def gestao_de_pacientes(request, id):

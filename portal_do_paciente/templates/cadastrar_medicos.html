@@ -34,38 +34,10 @@
       <!-- Container do Formulário -->
     <div class="container mt-5">
       <h1>Cadastre um médico</h1>
-      <form method="POST" >
-          {% csrf_token %}
-          <div class="mb-3">
-              <label for="nome" class="form-label">Nome</label>
-              <input type="text" class="form-control" id="nome" name="nome" required>
-          </div>
-          <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="text" class="form-control" id="email" name="email" required>
-          </div>
-          <div class="mb-3">
-              <label for="data_de_nascimento" class="form-label">Data de nascimento</label>
-              <input type="date" class="form-control" id="data_de_nascimento" name="data_de_nascimento" required>
-          </div>
-          <div class="mb-3">
-            <label for="cpf" class="form-label">CPF</label>
-            <input type="cpf" class="form-control" id="cpf" name="cpf" required>
-        </div>
-        <div class="mb-3">
-          <label for="crm" class="form-label">CRM</label>
-          <input type="number" class="form-control" id="crm" name="crm" required>
-      </div>
-      <div class="mb-3">
-        <label for="especialidade" class="form-label">Especialidade</label>
-        <input type="text" class="form-control" id="especialidade" name="especialidade" required>
-    </div>
-    <div class="mb-3">
-      <label for="password" class="form-label">Crie uma senha</label>
-      <input type="password" class="form-control" id="password" name="password" required>
-  </div>
-          <button type="submit" class="btn btn-primary">Cadastrar</button>
-      </form>
+  <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+</form>
   </div>
   
   <script>

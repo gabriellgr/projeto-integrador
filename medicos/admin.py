@@ -21,3 +21,11 @@ class MedicoAdmin(UserAdmin):
             'fields': ('cpf', 'nome', 'email', 'crm', 'especialidade', 'password1', 'password2', 'is_staff', 'is_superuser'),
         }),
     )
+
+    from django.contrib import admin
+from .models import Especialidade  # Importe o modelo Especialidade
+
+@admin.register(Especialidade)
+class EspecialidadeAdmin(admin.ModelAdmin):
+    list_display = ('nome',)  # Mostra apenas o nome na lista
+    search_fields = ('nome',)  # Permite pesquisar pelo nome

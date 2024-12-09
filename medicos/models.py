@@ -36,42 +36,43 @@ class MedicoManager(BaseUserManager):
 
         return self.create_user(cpf, password, **extra_fields)
 
+class Especialidade(models.Model):
+    nome = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.nome
+
+
 class Medico(AbstractBaseUser, PermissionsMixin):
     """
     Modelo de usuário Medico.
     """
     id = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=100)
-    email = models.CharField(max_length=100, unique=True)  # Email pode ser opcional
-    data_de_nascimento = models.DateField(
-                                          
-        default=timezone.now,
-        help_text=f'eg. {str(timezone.now().date())}'
-    )
-    cpf = models.CharField(max_length=11, unique=True, null=False, blank=True)
-    crm = models.CharField(max_length=20, unique=True)  # Número de registro médico
-    especialidade = models.CharField(max_length=100, blank=True, null=True)  # Campo para especialidade médica
+    email = models.EmailField(max_length=100, unique=True, blank=True, null=True)  # Corrigido para EmailField e opcional
+    data_de_nascimento = models.DateField(default=timezone.now)
+    cpf = models.CharField(max_length=11, unique=True)  #Removido null=False, blank=True. CPF deve ser obrigatório.
+    crm = models.CharField(max_length=20, unique=True)
+    especialidade = models.ForeignKey(Especialidade, on_delete=models.SET_NULL, blank=True, null=True) # Relacionamento com Especialidade
     password = models.CharField(max_length=128)
 
-    # Adiciona os campos is_staff e is_superuser
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 
-    USERNAME_FIELD = 'cpf'  # Define o CPF como o campo de identificação principal
-    REQUIRED_FIELDS = ['email', 'crm', 'password']  # CRM e email são obrigatórios
+    USERNAME_FIELD = 'cpf'
+    REQUIRED_FIELDS = ['email', 'crm', 'password']
 
     objects = MedicoManager()
 
-    # Corrige o problema de nomes conflitantes com related_name
     groups = models.ManyToManyField(
         'auth.Group',
-        related_name='medico_set',  # Nome exclusivo para o relacionamento do Medico
+        related_name='medico_set',
         blank=True
     )
     user_permissions = models.ManyToManyField(
         'auth.Permission',
-        related_name='medico_permissions_set',  # Nome exclusivo para o relacionamento do Medico
+        related_name='medico_permissions_set',
         blank=True
     )
 
