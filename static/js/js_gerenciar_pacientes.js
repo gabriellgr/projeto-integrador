@@ -1,4 +1,4 @@
-console.log('yesye')
+console.log('⚠️⚠️⚠️ Apenas funcionários🔧! ⚠️⚠️⚠️')
 
 function formatarCPF(cpf) {
     // Remove caracteres não numéricos
@@ -14,8 +14,8 @@ function formatarCPF(cpf) {
     }
     
     // Exemplo de uso:
-    const inputCPF =document.querySelector("#id_cpf");
+    const inputCPF = document.querySelector("#id_cpf");
     
     inputCPF.addEventListener('input', function() {
     this.value = formatarCPF(this.value);
-    });
+});

@@ -1,6 +1,7 @@
 from pacientes.models import Paciente
 from pacientes.forms import PacienteForm
 from medicos.models import Medico
+from medicos.forms import MedicoForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect,get_object_or_404
 from datetime import datetime,time

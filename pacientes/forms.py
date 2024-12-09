@@ -16,7 +16,7 @@ class PacienteForm(forms.ModelForm):
         widgets = {
             'password': forms.PasswordInput(),
             'data_de_nascimento': forms.DateInput(
-                format="%Y-%m-%d",  
+                format="%Y-%m-%d",
                 attrs={'type': 'date'}
             ),
             'nome': forms.TextInput(attrs={'class': 'form-control'}),
@@ -25,10 +25,14 @@ class PacienteForm(forms.ModelForm):
         }
 
         data_de_nascimento = forms.DateField(
-        widget=forms.DateInput(
-            format="%Y-%m-%d",  
-            attrs={'type': 'date'}
-        ),
-        input_formats=["%Y-%m-%d"],  
-        validators=[validate_future_date],
-    )
+            widget=forms.DateInput(
+                format="%Y-%m-%d",
+                attrs={'type': 'date'}
+            ),
+            input_formats=["%Y-%m-%d"],
+            validators=[validate_future_date],
+        )
+
+
+    cpf = forms.CharField(label="CPF", widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}), label="Senha")

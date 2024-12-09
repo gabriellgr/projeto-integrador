@@ -77,6 +77,7 @@
               </tr>
             </thead>
             <tbody>
+              {% if medicos %}
               {% for medico in medicos %}
               <tr>
                 <td>{{ medico.nome }}</td>
@@ -84,6 +85,11 @@
                 <td>{{ medico.crm }}</td>
               </tr>
               {% endfor %}
+              
+              {% else %}
+                <p>Sem medicos cadastrados</p>
+              {% endif %}
+
             </tbody>
           </table>
         </div>
