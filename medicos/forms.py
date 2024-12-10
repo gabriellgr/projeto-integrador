@@ -18,5 +18,6 @@ class MedicoForm(forms.ModelForm):
         labels = {
             'cpf': 'CPF',
             'password': 'Senha',
+            'crm':'CRM',
             #Adicione outros labels se necessario
         }
