@@ -18,7 +18,13 @@
     color: white; 
   }
   /* Estilos para os links da navbar */
+  .navbar-nav{
+    align-content: space-between;
+    
+    
+  }
   .navbar-nav > li > a {
+    padding: 30px;
     color: white;
     border-radius: 6px;
     transition: background-color 1s;

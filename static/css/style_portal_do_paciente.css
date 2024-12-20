@@ -64,7 +64,7 @@ input {
 /* Para telas pequenas (smartphones) */
 @media (max-width: 576px) {
     body {
-        font-size: 0.9rem; /* Fonte um pouco menor em telas pequenas */
+        font-size: 1.6rem; /* Fonte um pouco menor em telas pequenas */
     }
     .navbar-nav > li > a {
         font-size: 0.9rem; /* Font menor para não quebrar a barra de navegação*/
@@ -75,10 +75,12 @@ input {
 /* Para telas médias (tablets) */
 @media (min-width: 577px) and (max-width: 991px) {
   body {
-    font-size: 1.1rem; /* Fonte maior para tablets */
+    font-size: 2rem; /* Fonte maior para tablets */
+    
   }
    .navbar-nav > li > a {
-       font-size: 1rem;/* Font menor para não quebrar a barra de navegação*/
+
+       font-size: 2rem;/* Font menor para não quebrar a barra de navegação*/
         padding: 0.6rem 1rem; /* Ajustando o padding para tablets */
         margin: 0.1rem;
   }
