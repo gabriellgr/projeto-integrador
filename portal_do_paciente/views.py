@@ -102,6 +102,13 @@ def agendar_consulta(request, id):
         'medicos': medicos,
         'horarios': HORARIOS_DICT
     }
+    from django.utils import timezone
+    #deleção de consultas
+    hoje = timezone.now().date()
+    consultas_antigas = AgendamentoConsulta.objects.filter(data__lt=hoje)
+    consultas_antigas.delete()
+
+
     return render(request, 'agendamento.html', context)
 
 def logout_view(request):

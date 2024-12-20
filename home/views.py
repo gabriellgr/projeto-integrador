@@ -67,7 +67,7 @@ def cadastro(request):
 
             # Define a data de nascimento corretamente
             paciente.data_de_nascimento = form.cleaned_data['data_de_nascimento']
-            
+            paciente.nome = paciente.nome.title()
             # Salva o paciente no banco de dados
             paciente.is_staff = False
             paciente.is_superuser = False
