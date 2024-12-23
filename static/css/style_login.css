@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: white;
+  background-color: royalblue;
   background-size: cover;
   background-position: center;
   margin: 0; /* Remove margem padrão do body */
@@ -54,11 +54,11 @@ h2 {
 
 .container-login {
   text-align: center;
-  padding: 35px;
+  padding: 30px;
   border: 2px solid rgb(0, 100, 150);
   background-color: gray;
   border-radius: 15px;
-  width: 90%;  /* Largura responsiva */
+  width: 80%;  /* Largura responsiva */
   max-width: 500px;  /* Largura máxima para evitar que fique muito grande em telas maiores */
   box-sizing: border-box;
 }
@@ -89,24 +89,4 @@ button:hover {
   background-color: white;
   transition: 1s;
   color: royalblue;
-}
-
-@media screen and (min-width: 375px) {
-  body {
-      font-size: 1.5rem; /* Reduzido para um incremento menor em telas maiores */
-  }
-      #password,
-      #cpf,
-      label {
-          font-size: 1.8rem;
-      }
-}
-
-@media screen and (min-width: 768px) {
-  main {
-    padding: 0; /* Remove padding em telas maiores */
-  }
-  .container-login{
-    width: 70%; /* Largura do container em telas maiores */
-  }
 }
